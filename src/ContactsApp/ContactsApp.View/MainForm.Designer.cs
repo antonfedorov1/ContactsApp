@@ -55,7 +55,7 @@
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.ShortcutAboutFormMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BirthdayPanelCloseButton = new System.Windows.Forms.PictureBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
@@ -365,7 +365,7 @@
             // 
             this.ShortcutAboutFormMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.ShortcutAboutFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aToolStripMenuItem});
+            this.AboutButtonToolStripMenuItem});
             this.ShortcutAboutFormMenuStrip.Location = new System.Drawing.Point(150, 272);
             this.ShortcutAboutFormMenuStrip.Name = "ShortcutAboutFormMenuStrip";
             this.ShortcutAboutFormMenuStrip.Size = new System.Drawing.Size(33, 24);
@@ -373,13 +373,13 @@
             this.ShortcutAboutFormMenuStrip.Text = "menuStrip1";
             this.ShortcutAboutFormMenuStrip.Visible = false;
             // 
-            // aToolStripMenuItem
+            // AboutButtonToolStripMenuItem
             // 
-            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 20);
-            this.aToolStripMenuItem.Text = "a";
-            this.aToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
+            this.AboutButtonToolStripMenuItem.Name = "AboutButtonToolStripMenuItem";
+            this.AboutButtonToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.AboutButtonToolStripMenuItem.Size = new System.Drawing.Size(25, 20);
+            this.AboutButtonToolStripMenuItem.Text = "a";
+            this.AboutButtonToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
             // 
             // BirthdayPanelCloseButton
             // 
@@ -391,6 +391,7 @@
             this.BirthdayPanelCloseButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.BirthdayPanelCloseButton.TabIndex = 3;
             this.BirthdayPanelCloseButton.TabStop = false;
+            this.BirthdayPanelCloseButton.Click += new System.EventHandler(this.BirthdayPanelCloseButton_Click);
             // 
             // MainForm
             // 
@@ -451,7 +452,7 @@
         private System.Windows.Forms.PictureBox EditContactbutton;
         private System.Windows.Forms.PictureBox RemoveContactbutton;
         private System.Windows.Forms.MenuStrip ShortcutAboutFormMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutButtonToolStripMenuItem;
         private System.Windows.Forms.PictureBox BirthdayPanelCloseButton;
     }
 }
