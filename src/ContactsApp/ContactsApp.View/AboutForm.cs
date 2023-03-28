@@ -16,5 +16,15 @@ namespace ContactsApp.View
         {
             InitializeComponent();
         }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void CopyrightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled= true;
+        }
     }
 }

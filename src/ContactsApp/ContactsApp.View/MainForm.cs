@@ -21,6 +21,14 @@ namespace ContactsApp.View
         {
             var form = new ContactForm();
             form.ShowDialog();
+            Activate();
+        }
+
+        private void EditContactbutton_Click(object sender, EventArgs e)
+        {
+            var form = new ContactForm();
+            form.ShowDialog();
+            Activate();
         }
 
         private void AddContactbutton_MouseEnter(object sender, EventArgs e)
@@ -57,6 +65,13 @@ namespace ContactsApp.View
         {
             RemoveContactbutton.Image = Properties.Resources.remove_contact_32x32_gray;
             RemoveContactbutton.BackColor = Color.White;
+        }
+
+        private void aToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new AboutForm();
+            form.ShowDialog();
+            Activate();
         }
     }
 }

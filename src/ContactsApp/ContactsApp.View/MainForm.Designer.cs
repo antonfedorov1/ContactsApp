@@ -40,7 +40,6 @@
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.RightPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
-            this.BirthdayPanelCloseButton = new System.Windows.Forms.Button();
             this.BirthdaySurnamesLabel = new System.Windows.Forms.Label();
             this.TodayIsBirthdayOfLabel = new System.Windows.Forms.Label();
             this.ImageInfoPictureBox = new System.Windows.Forms.PictureBox();
@@ -55,6 +54,9 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.ShortcutAboutFormMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BirthdayPanelCloseButton = new System.Windows.Forms.PictureBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
             this.ButtonsTableLayoutPanel.SuspendLayout();
@@ -65,6 +67,8 @@
             this.BirthdayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
+            this.ShortcutAboutFormMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -136,6 +140,7 @@
             this.EditContactbutton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.EditContactbutton.TabIndex = 1;
             this.EditContactbutton.TabStop = false;
+            this.EditContactbutton.Click += new System.EventHandler(this.EditContactbutton_Click);
             this.EditContactbutton.MouseEnter += new System.EventHandler(this.EditContactbutton_MouseEnter);
             this.EditContactbutton.MouseLeave += new System.EventHandler(this.EditContactbutton_MouseLeave);
             // 
@@ -193,6 +198,7 @@
             // 
             // RightPanel
             // 
+            this.RightPanel.Controls.Add(this.ShortcutAboutFormMenuStrip);
             this.RightPanel.Controls.Add(this.BirthdayPanel);
             this.RightPanel.Controls.Add(this.VKTextBox);
             this.RightPanel.Controls.Add(this.VKLabel);
@@ -224,18 +230,6 @@
             this.BirthdayPanel.Name = "BirthdayPanel";
             this.BirthdayPanel.Size = new System.Drawing.Size(538, 75);
             this.BirthdayPanel.TabIndex = 11;
-            // 
-            // BirthdayPanelCloseButton
-            // 
-            this.BirthdayPanelCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BirthdayPanelCloseButton.FlatAppearance.BorderSize = 0;
-            this.BirthdayPanelCloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BirthdayPanelCloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32;
-            this.BirthdayPanelCloseButton.Location = new System.Drawing.Point(503, 3);
-            this.BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
-            this.BirthdayPanelCloseButton.Size = new System.Drawing.Size(32, 32);
-            this.BirthdayPanelCloseButton.TabIndex = 3;
-            this.BirthdayPanelCloseButton.UseVisualStyleBackColor = true;
             // 
             // BirthdaySurnamesLabel
             // 
@@ -273,7 +267,7 @@
             // 
             this.VKTextBox.Location = new System.Drawing.Point(110, 220);
             this.VKTextBox.Name = "VKTextBox";
-            this.VKTextBox.Size = new System.Drawing.Size(160, 20);
+            this.VKTextBox.Size = new System.Drawing.Size(180, 20);
             this.VKTextBox.TabIndex = 10;
             // 
             // VKLabel
@@ -290,7 +284,7 @@
             // 
             this.DateOfBirthTextBox.Location = new System.Drawing.Point(110, 171);
             this.DateOfBirthTextBox.Name = "DateOfBirthTextBox";
-            this.DateOfBirthTextBox.Size = new System.Drawing.Size(160, 20);
+            this.DateOfBirthTextBox.Size = new System.Drawing.Size(180, 20);
             this.DateOfBirthTextBox.TabIndex = 8;
             // 
             // DateOfBirthLabel
@@ -307,7 +301,7 @@
             // 
             this.PhoneNumberTextBox.Location = new System.Drawing.Point(110, 122);
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
-            this.PhoneNumberTextBox.Size = new System.Drawing.Size(160, 20);
+            this.PhoneNumberTextBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberTextBox.TabIndex = 6;
             // 
             // PhoneNumberLabel
@@ -367,6 +361,37 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
+            // ShortcutAboutFormMenuStrip
+            // 
+            this.ShortcutAboutFormMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.ShortcutAboutFormMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aToolStripMenuItem});
+            this.ShortcutAboutFormMenuStrip.Location = new System.Drawing.Point(150, 272);
+            this.ShortcutAboutFormMenuStrip.Name = "ShortcutAboutFormMenuStrip";
+            this.ShortcutAboutFormMenuStrip.Size = new System.Drawing.Size(33, 24);
+            this.ShortcutAboutFormMenuStrip.TabIndex = 13;
+            this.ShortcutAboutFormMenuStrip.Text = "menuStrip1";
+            this.ShortcutAboutFormMenuStrip.Visible = false;
+            // 
+            // aToolStripMenuItem
+            // 
+            this.aToolStripMenuItem.Name = "aToolStripMenuItem";
+            this.aToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(25, 20);
+            this.aToolStripMenuItem.Text = "a";
+            this.aToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
+            // 
+            // BirthdayPanelCloseButton
+            // 
+            this.BirthdayPanelCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthdayPanelCloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32;
+            this.BirthdayPanelCloseButton.Location = new System.Drawing.Point(503, 3);
+            this.BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
+            this.BirthdayPanelCloseButton.Size = new System.Drawing.Size(32, 32);
+            this.BirthdayPanelCloseButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.BirthdayPanelCloseButton.TabIndex = 3;
+            this.BirthdayPanelCloseButton.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,6 +401,7 @@
             this.Controls.Add(this.MainTableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContactsApp";
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.LeftPanel.ResumeLayout(false);
@@ -390,6 +416,9 @@
             this.BirthdayPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
+            this.ShortcutAboutFormMenuStrip.ResumeLayout(false);
+            this.ShortcutAboutFormMenuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -418,10 +447,12 @@
         private System.Windows.Forms.Label BirthdaySurnamesLabel;
         private System.Windows.Forms.Label TodayIsBirthdayOfLabel;
         private System.Windows.Forms.PictureBox ImageInfoPictureBox;
-        private System.Windows.Forms.Button BirthdayPanelCloseButton;
         private System.Windows.Forms.PictureBox AddContactbutton;
         private System.Windows.Forms.PictureBox EditContactbutton;
         private System.Windows.Forms.PictureBox RemoveContactbutton;
+        private System.Windows.Forms.MenuStrip ShortcutAboutFormMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem aToolStripMenuItem;
+        private System.Windows.Forms.PictureBox BirthdayPanelCloseButton;
     }
 }
 
