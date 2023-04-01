@@ -67,16 +67,18 @@ namespace ContactsApp.View
             RemoveContactbutton.BackColor = Color.White;
         }
 
-        private void aToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var form = new AboutForm();
-            form.ShowDialog();
-            Activate();
-        }
-
         private void BirthdayPanelCloseButton_Click(object sender, EventArgs e)
         {
             BirthdayPanel.Visible = false;
+        }
+
+        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            using (var helpForm = new AboutForm())
+            {
+                helpForm.ShowDialog();
+                Activate();
+            }
         }
     }
 }
