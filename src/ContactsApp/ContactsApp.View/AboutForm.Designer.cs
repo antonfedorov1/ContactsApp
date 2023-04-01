@@ -119,10 +119,11 @@
             this.AuthorGithubLinkLabel.AutoSize = true;
             this.AuthorGithubLinkLabel.Location = new System.Drawing.Point(117, 121);
             this.AuthorGithubLinkLabel.Name = "AuthorGithubLinkLabel";
-            this.AuthorGithubLinkLabel.Size = new System.Drawing.Size(139, 13);
+            this.AuthorGithubLinkLabel.Size = new System.Drawing.Size(169, 13);
             this.AuthorGithubLinkLabel.TabIndex = 8;
             this.AuthorGithubLinkLabel.TabStop = true;
-            this.AuthorGithubLinkLabel.Text = "https://github.com/annfeee";
+            this.AuthorGithubLinkLabel.Text = "https://github.com/antonfedorov1";
+            this.AuthorGithubLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.AuthorGithubLinkLabel_LinkClicked);
             // 
             // CopyrightTextBox
             // 
@@ -154,6 +155,7 @@
             this.Icons8LinkLabel.TabIndex = 11;
             this.Icons8LinkLabel.TabStop = true;
             this.Icons8LinkLabel.Text = "icons8.com";
+            this.Icons8LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Icons8LinkLabel_LinkClicked);
             // 
             // ButtonContactAppPanel
             // 
