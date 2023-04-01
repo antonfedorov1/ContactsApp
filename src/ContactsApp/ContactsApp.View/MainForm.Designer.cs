@@ -277,6 +277,7 @@
             this.VKTextBox.Name = "VKTextBox";
             this.VKTextBox.Size = new System.Drawing.Size(180, 20);
             this.VKTextBox.TabIndex = 10;
+            this.VKTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VKTextBox_KeyPress);
             // 
             // VKLabel
             // 
@@ -294,6 +295,7 @@
             this.DateOfBirthTextBox.Name = "DateOfBirthTextBox";
             this.DateOfBirthTextBox.Size = new System.Drawing.Size(180, 20);
             this.DateOfBirthTextBox.TabIndex = 8;
+            this.DateOfBirthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DateOfBirthTextBox_KeyPress);
             // 
             // DateOfBirthLabel
             // 
@@ -311,6 +313,7 @@
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberTextBox.TabIndex = 6;
+            this.PhoneNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumberTextBox_KeyPress);
             // 
             // PhoneNumberLabel
             // 
@@ -330,6 +333,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(431, 20);
             this.EmailTextBox.TabIndex = 4;
+            this.EmailTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EmailTextBox_KeyPress);
             // 
             // EmailLabel
             // 
@@ -347,8 +351,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FullNameTextBox.Location = new System.Drawing.Point(110, 22);
             this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Size = new System.Drawing.Size(428, 20);
+            this.FullNameTextBox.Size = new System.Drawing.Size(431, 20);
             this.FullNameTextBox.TabIndex = 2;
+            this.FullNameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FullNameTextBox_KeyPress);
             // 
             // FullNameLabel
             // 
