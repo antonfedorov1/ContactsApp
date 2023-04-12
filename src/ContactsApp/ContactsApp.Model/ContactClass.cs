@@ -1,11 +1,14 @@
-﻿namespace ContactsApp.Model
+﻿using System.Globalization;
+using System.Text.RegularExpressions;
+
+namespace ContactsApp.Model
 {
-    public class ContactClass
+    public class Contact
     {
         private string _fullName;
         private string _eMail;
         private string _phoneNumber;
-        private string _dateOfBirth;
+        private DateTime _dateOfBirth;
         private string _idVK;
 
         public string FullName
@@ -18,10 +21,8 @@
                     throw new ArgumentException($"Длина поля Полное имя не должно быть меньше" +
                         $"0 и больше 100 символов.");
                 }
-                for (int i = 0; i < _fullName.Length; i++)
-                {
-
-                }
+                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                value = textInfo.ToTitleCase(value);
                 _fullName = value;
             }
         }
@@ -43,13 +44,34 @@
         public string PhoneNumber
         {
             get { return _phoneNumber; }
-            set { _phoneNumber = value; }
+            set 
+            {
+                Regex validatePhoneNumberRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)" +
+                    "?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$");
+                if (validatePhoneNumberRegex.IsMatch(value) == false)
+                {
+                    throw new ArgumentException($"Номер телефона может содержать только" +
+                        $"цифры и знаки ‘+’, ‘(’ ‘)’ ‘-’ ‘ ’. Формат номера: +7 (000) 000-00-00");
+                }
+                _phoneNumber = value; 
+            }
         }
 
-        public string DateOfBirth
+        public DateTime DateOfBirth
         {
             get { return _dateOfBirth; }
-            set { _dateOfBirth = value; }
+            set
+            {
+                DateTime minDate = new DateTime(1900, 1, 1);
+                DateTime nowDate = new DateTime();
+                nowDate = DateTime.Now;
+                if (value > nowDate || value < minDate)
+                {
+                    throw new ArgumentException($"Дата рождения не может быть более текущей " +
+                        $"даты и не может быть менее 1900 года.");
+                }
+                _dateOfBirth = value; 
+            }
         }
 
         public string IdVK
@@ -64,6 +86,16 @@
                 }
                 _idVK = value;
             }
+        }
+
+        public Contact(string _fullName, string _eMail, string _phoneNumber, 
+            DateTime _dateOfBirth, string _idVK)
+        {
+            FullName = _fullName;
+            EMail = _eMail;
+            PhoneNumber = _phoneNumber;
+            DateOfBirth = _dateOfBirth;
+            IdVK = _idVK;
         }
     }
 }
