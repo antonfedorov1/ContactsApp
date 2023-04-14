@@ -3,14 +3,39 @@ using System.Text.RegularExpressions;
 
 namespace ContactsApp.Model
 {
+    /// <summary>
+    /// Описывает контакт
+    /// </summary>
     public class Contact
     {
+        /// <summary>
+        /// Фамилия и имя контакта
+        /// </summary>
         private string _fullName;
+
+        /// <summary>
+        /// Почтовый ящик контакта
+        /// </summary>
         private string _eMail;
+
+        /// <summary>
+        /// Телефонный номер контакта
+        /// </summary>
         private string _phoneNumber;
+
+        /// <summary>
+        /// Дата рождения контакта
+        /// </summary>
         private DateTime _dateOfBirth;
+
+        /// <summary>
+        /// ID в VK контакта
+        /// </summary>
         private string _idVK;
 
+        /// <summary>
+        /// Возвращает или задает фамилия и имя контакта
+        /// </summary>
         public string FullName
         {
             get { return _fullName; }
@@ -27,6 +52,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задает почтовый ящик контакта
+        /// </summary>
         public string EMail
         {
             get { return _eMail; }
@@ -41,6 +69,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задает телефонный номер контакта
+        /// </summary>
         public string PhoneNumber
         {
             get { return _phoneNumber; }
@@ -57,6 +88,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задает дату рождения контакта
+        /// </summary>
         public DateTime DateOfBirth
         {
             get { return _dateOfBirth; }
@@ -74,6 +108,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Возвращает или задает ID в VK контакта
+        /// </summary>
         public string IdVK
         {
             get { return _idVK; }
@@ -88,6 +125,9 @@ namespace ContactsApp.Model
             }
         }
 
+        /// <summary>
+        /// Создает экземпляр <see cref="Contact">
+        /// </summary>
         public Contact(string _fullName, string _eMail, string _phoneNumber, 
             DateTime _dateOfBirth, string _idVK)
         {
