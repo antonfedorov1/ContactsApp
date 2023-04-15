@@ -44,7 +44,7 @@
             }
             set
             {
-                if (_fullName.Length <= 0 || _fullName.Length >= 100)
+                if (_fullName.Length <= 0 || _fullName.Length > 100)
                 {
                     throw new ArgumentException($"Длина поля Полное имя не должно быть меньше" +
                         $"0 и больше 100 символов.");
@@ -66,7 +66,7 @@
             }
             set
             {
-                if (_eMail.Length <= 0 || _eMail.Length >= 100)
+                if (_eMail.Length <= 0 || _eMail.Length > 100)
                 {
                     throw new ArgumentException($"Длина поля E-mail не должно быть меньше" +
                         $"0 и больше 100 символов.");
@@ -131,7 +131,7 @@
             }
             set
             {
-                if (_idVK.Length <= 0 || _idVK.Length >= 50)
+                if (_idVK.Length <= 0 || _idVK.Length > 50)
                 {
                     throw new ArgumentException($"Длина поля ID Вконтакте не должно быть меньше" +
                         $"0 и больше 50 символов.");
