@@ -11,24 +11,24 @@
         /// <summary>
         /// Максимальная длина строки фамилия и имя.
         /// </summary>
-        const int maxLineLengthFullName = 100;
+        private const int MaxLineLengthFullName = 100;
 
         /// <summary>
         /// Максимальная длина строки E-mail.
         /// </summary>
-        const int maxLineLengthEMail = 100;
+        private const int MaxLineLengthEMail = 100;
 
         /// <summary>
         /// Максимальная длина строки E-mail.
         /// </summary>
-        const int maxLineLengthIdVK = 50;
+        private const int MaxLineLengthIdVK = 50;
 
         /// <summary>
         /// Это регулярное выражение будет сопоставлять телефонные номера, введенные с 
         /// разделителями (пробелами, точками, скобками и т. д.).
         /// Пример оформления номера: +7 (000) 000-00-00.
         /// </summary>
-        const string regex = "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)" +
+        const string PhoneNumberRegex = "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)" +
                     "?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$";
 
         /// <summary>
@@ -67,10 +67,10 @@
             }
             set
             {
-                if (_fullName.Length <= 0 || _fullName.Length > maxLineLengthFullName)
+                if (_fullName.Length <= 0 || _fullName.Length > MaxLineLengthFullName)
                 {
                     throw new ArgumentException($"Длина поля Полное имя не должно быть меньше" +
-                        $"0 и больше {maxLineLengthFullName} символов.");
+                        $"0 и больше {MaxLineLengthFullName} символов.");
                 }
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 value = textInfo.ToTitleCase(value);
@@ -89,10 +89,10 @@
             }
             set
             {
-                if (_eMail.Length <= 0 || _eMail.Length > maxLineLengthEMail)
+                if (_eMail.Length <= 0 || _eMail.Length > MaxLineLengthEMail)
                 {
                     throw new ArgumentException($"Длина поля E-mail не должно быть меньше" +
-                        $"0 и больше {maxLineLengthEMail} символов.");
+                        $"0 и больше {MaxLineLengthEMail} символов.");
                 }
                 _eMail = value;
             }
@@ -109,7 +109,7 @@
             }
             set 
             {
-                Regex validatePhoneNumberRegex = new Regex(regex);
+                Regex validatePhoneNumberRegex = new Regex(PhoneNumberRegex);
                 if (!validatePhoneNumberRegex.IsMatch(value))
                 {
                     throw new ArgumentException($"Номер телефона может содержать только" +
@@ -153,10 +153,10 @@
             }
             set
             {
-                if (_idVK.Length <= 0 || _idVK.Length > maxLineLengthIdVK)
+                if (_idVK.Length <= 0 || _idVK.Length > MaxLineLengthIdVK)
                 {
                     throw new ArgumentException($"Длина поля ID Вконтакте не должно быть меньше" +
-                        $"0 и больше {maxLineLengthIdVK} символов.");
+                        $"0 и больше {MaxLineLengthIdVK} символов.");
                 }
                 _idVK = value;
             }
@@ -165,19 +165,19 @@
         /// <summary>
         /// Конструктор класса <see cref="Contact"/>.
         /// </summary>
-        /// <param name="_fullName"></param>
-        /// <param name="_eMail"></param>
-        /// <param name="_phoneNumber"></param>
-        /// <param name="_dateOfBirth"></param>
-        /// <param name="_idVK"></param>
-        public Contact(string _fullName, string _eMail, string _phoneNumber, 
-            DateTime _dateOfBirth, string _idVK)
+        /// <param name="fullName"></param>
+        /// <param name="eMail"></param>
+        /// <param name="phoneNumber"></param>
+        /// <param name="dateOfBirth"></param>
+        /// <param name="idVK"></param>
+        public Contact(string fullName, string eMail, string phoneNumber, 
+            DateTime dateOfBirth, string idVK)
         {
-            FullName = _fullName;
-            EMail = _eMail;
-            PhoneNumber = _phoneNumber;
-            DateOfBirth = _dateOfBirth;
-            IdVK = _idVK;
+            FullName = fullName;
+            EMail = eMail;
+            PhoneNumber = phoneNumber;
+            DateOfBirth = dateOfBirth;
+            IdVK = idVK;
         }
 
         /// <summary>

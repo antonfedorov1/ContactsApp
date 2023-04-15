@@ -28,16 +28,16 @@
         /// <returns>Список всех именинников.</returns>
         public List<Contact> FindBirthdays(List<Contact> contacts)
         {
-            List<Contact> birthDayContact = new List<Contact>();
+            List<Contact> birthDayContacts = new List<Contact>();
             foreach (var contact in contacts)
             {
                 if (contact.DateOfBirth.Day == DateTime.Today.Day &&
                     contact.DateOfBirth.Month == DateTime.Today.Month)
                 {
-                    birthDayContact.Add(contact);
+                    birthDayContacts.Add(contact);
                 }
             }
-            return birthDayContact;
+            return birthDayContacts;
         }
 
         /// <summary>
