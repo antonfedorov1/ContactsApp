@@ -1,8 +1,8 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace ContactsApp.Model
+﻿namespace ContactsApp.Model
 {
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
+
     /// <summary>
     /// Сериализация и десериализация списка контактов
     /// </summary>
