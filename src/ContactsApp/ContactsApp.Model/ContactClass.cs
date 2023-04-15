@@ -1,12 +1,12 @@
-﻿using System.Globalization;
-using System.Text.RegularExpressions;
-
-namespace ContactsApp.Model
+﻿namespace ContactsApp.Model
 {
+    using System.Globalization;
+    using System.Text.RegularExpressions;
+
     /// <summary>
-    /// Описывает контакт
+    /// Контакт
     /// </summary>
-    public class Contact
+    public class Contact : ICloneable
     {
         /// <summary>
         /// Фамилия и имя контакта
@@ -38,7 +38,10 @@ namespace ContactsApp.Model
         /// </summary>
         public string FullName
         {
-            get { return _fullName; }
+            get 
+            { 
+                return _fullName; 
+            }
             set
             {
                 if (_fullName.Length <= 0 || _fullName.Length >= 100)
@@ -57,7 +60,10 @@ namespace ContactsApp.Model
         /// </summary>
         public string EMail
         {
-            get { return _eMail; }
+            get 
+            { 
+                return _eMail; 
+            }
             set
             {
                 if (_eMail.Length <= 0 || _eMail.Length >= 100)
@@ -74,7 +80,10 @@ namespace ContactsApp.Model
         /// </summary>
         public string PhoneNumber
         {
-            get { return _phoneNumber; }
+            get 
+            { 
+                return _phoneNumber; 
+            }
             set 
             {
                 Regex validatePhoneNumberRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)" +
@@ -93,7 +102,10 @@ namespace ContactsApp.Model
         /// </summary>
         public DateTime DateOfBirth
         {
-            get { return _dateOfBirth; }
+            get 
+            { 
+                return _dateOfBirth; 
+            }
             set
             {
                 DateTime minDate = new DateTime(1900, 1, 1);
@@ -113,7 +125,10 @@ namespace ContactsApp.Model
         /// </summary>
         public string IdVK
         {
-            get { return _idVK; }
+            get 
+            { 
+                return _idVK; 
+            }
             set
             {
                 if (_idVK.Length <= 0 || _idVK.Length >= 50)
@@ -126,7 +141,7 @@ namespace ContactsApp.Model
         }
 
         /// <summary>
-        /// Создает экземпляр <see cref="Contact">
+        /// Конструктор класса <see cref="Contact">
         /// </summary>
         public Contact(string _fullName, string _eMail, string _phoneNumber, 
             DateTime _dateOfBirth, string _idVK)
@@ -136,6 +151,27 @@ namespace ContactsApp.Model
             PhoneNumber = _phoneNumber;
             DateOfBirth = _dateOfBirth;
             IdVK = _idVK;
+        }
+
+        /// <summary>
+        /// Создает экземпляр класса
+        /// </summary>
+        public Contact()
+        {
+        }
+
+        /// <summary>
+        /// Клонирование данного объекта
+        /// </summary>
+        public object Clone()
+        {
+            Contact contact = new Contact();
+            contact.FullName = FullName;
+            contact.EMail = EMail;
+            contact.PhoneNumber = PhoneNumber;
+            contact.DateOfBirth = DateOfBirth;
+            contact.IdVK = IdVK;
+            return contact;
         }
     }
 }

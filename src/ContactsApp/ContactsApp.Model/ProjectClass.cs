@@ -1,7 +1,7 @@
 ﻿namespace ContactsApp.Model
 {
     /// <summary>
-    /// Опсывает список контактов
+    /// Список контактов
     /// </summary>
     public class Project
     {
@@ -43,7 +43,10 @@
         /// </summary>
         public List<Contact> ContactsList
         {
-            get { return _contactsList; }
+            get 
+            { 
+                return _contactsList; 
+            }
             set
             {
                 _contactsList = SortContacts(value);
