@@ -4,27 +4,50 @@
     using System.Text.RegularExpressions;
 
     /// <summary>
-    /// Контакт
+    /// Контакт.
     /// </summary>
     public class Contact : ICloneable
     {
         /// <summary>
-        /// Фамилия и имя контакта
+        /// Максимальная длина строки фамилия и имя.
+        /// </summary>
+        const int maxLineLengthFullName = 100;
+
+        /// <summary>
+        /// Максимальная длина строки E-mail.
+        /// </summary>
+        const int maxLineLengthEMail = 100;
+
+        /// <summary>
+        /// Максимальная длина строки E-mail.
+        /// </summary>
+        const int maxLineLengthIdVK = 50;
+
+        /// <summary>
+        /// Это регулярное выражение будет сопоставлять телефонные номера, введенные с 
+        /// разделителями (пробелами, точками, скобками и т. д.).
+        /// Пример оформления номера: +7 (000) 000-00-00.
+        /// </summary>
+        const string regex = "^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)" +
+                    "?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$";
+
+        /// <summary>
+        /// Фамилия и имя контакта.
         /// </summary>
         private string _fullName;
 
         /// <summary>
-        /// Почтовый ящик контакта
+        /// Почтовый ящик контакта.
         /// </summary>
         private string _eMail;
 
         /// <summary>
-        /// Телефонный номер контакта
+        /// Телефонный номер контакта.
         /// </summary>
         private string _phoneNumber;
 
         /// <summary>
-        /// Дата рождения контакта
+        /// Дата рождения контакта.
         /// </summary>
         private DateTime _dateOfBirth;
 
@@ -34,7 +57,7 @@
         private string _idVK;
 
         /// <summary>
-        /// Возвращает или задает фамилия и имя контакта
+        /// Возвращает и задает фамилия и имя контакта.
         /// </summary>
         public string FullName
         {
@@ -44,10 +67,10 @@
             }
             set
             {
-                if (_fullName.Length <= 0 || _fullName.Length > 100)
+                if (_fullName.Length <= 0 || _fullName.Length > maxLineLengthFullName)
                 {
                     throw new ArgumentException($"Длина поля Полное имя не должно быть меньше" +
-                        $"0 и больше 100 символов.");
+                        $"0 и больше {maxLineLengthFullName} символов.");
                 }
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 value = textInfo.ToTitleCase(value);
@@ -56,7 +79,7 @@
         }
 
         /// <summary>
-        /// Возвращает или задает почтовый ящик контакта
+        /// Возвращает и задает почтовый ящик контакта.
         /// </summary>
         public string EMail
         {
@@ -66,17 +89,17 @@
             }
             set
             {
-                if (_eMail.Length <= 0 || _eMail.Length > 100)
+                if (_eMail.Length <= 0 || _eMail.Length > maxLineLengthEMail)
                 {
                     throw new ArgumentException($"Длина поля E-mail не должно быть меньше" +
-                        $"0 и больше 100 символов.");
+                        $"0 и больше {maxLineLengthEMail} символов.");
                 }
                 _eMail = value;
             }
         }
 
         /// <summary>
-        /// Возвращает или задает телефонный номер контакта
+        /// Возвращает и задает телефонный номер контакта.
         /// </summary>
         public string PhoneNumber
         {
@@ -86,9 +109,8 @@
             }
             set 
             {
-                Regex validatePhoneNumberRegex = new Regex("^\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)" +
-                    "?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$");
-                if (validatePhoneNumberRegex.IsMatch(value) == false)
+                Regex validatePhoneNumberRegex = new Regex(regex);
+                if (!validatePhoneNumberRegex.IsMatch(value))
                 {
                     throw new ArgumentException($"Номер телефона может содержать только" +
                         $"цифры и знаки ‘+’, ‘(’ ‘)’ ‘-’ ‘ ’. Формат номера: +7 (000) 000-00-00");
@@ -98,7 +120,7 @@
         }
 
         /// <summary>
-        /// Возвращает или задает дату рождения контакта
+        /// Возвращает или задает дату рождения контакта.
         /// </summary>
         public DateTime DateOfBirth
         {
@@ -109,8 +131,8 @@
             set
             {
                 DateTime minDate = new DateTime(1900, 1, 1);
-                DateTime nowDate = new DateTime();
-                nowDate = DateTime.Now;
+                DateTime nowDate = DateTime.Now;
+
                 if (value > nowDate || value < minDate)
                 {
                     throw new ArgumentException($"Дата рождения не может быть более текущей " +
@@ -121,7 +143,7 @@
         }
 
         /// <summary>
-        /// Возвращает или задает ID в VK контакта
+        /// Возвращает или задает ID в VK контакта.
         /// </summary>
         public string IdVK
         {
@@ -131,18 +153,23 @@
             }
             set
             {
-                if (_idVK.Length <= 0 || _idVK.Length > 50)
+                if (_idVK.Length <= 0 || _idVK.Length > maxLineLengthIdVK)
                 {
                     throw new ArgumentException($"Длина поля ID Вконтакте не должно быть меньше" +
-                        $"0 и больше 50 символов.");
+                        $"0 и больше {maxLineLengthIdVK} символов.");
                 }
                 _idVK = value;
             }
         }
 
         /// <summary>
-        /// Конструктор класса <see cref="Contact">
+        /// Конструктор класса <see cref="Contact"/>.
         /// </summary>
+        /// <param name="_fullName"></param>
+        /// <param name="_eMail"></param>
+        /// <param name="_phoneNumber"></param>
+        /// <param name="_dateOfBirth"></param>
+        /// <param name="_idVK"></param>
         public Contact(string _fullName, string _eMail, string _phoneNumber, 
             DateTime _dateOfBirth, string _idVK)
         {
@@ -154,24 +181,18 @@
         }
 
         /// <summary>
-        /// Создает экземпляр класса
+        /// Создает экземпляр класса <see cref="Contact"/>.
         /// </summary>
         public Contact()
         {
         }
 
         /// <summary>
-        /// Клонирование данного объекта
+        /// Клонирование данного объекта.
         /// </summary>
         public object Clone()
         {
-            Contact contact = new Contact();
-            contact.FullName = FullName;
-            contact.EMail = EMail;
-            contact.PhoneNumber = PhoneNumber;
-            contact.DateOfBirth = DateOfBirth;
-            contact.IdVK = IdVK;
-            return contact;
+            return new Contact(_fullName, _eMail, _phoneNumber, _dateOfBirth, _idVK);
         }
     }
 }
