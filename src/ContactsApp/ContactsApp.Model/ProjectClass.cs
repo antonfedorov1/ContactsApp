@@ -1,7 +1,7 @@
 ﻿namespace ContactsApp.Model
 {
     /// <summary>
-    /// 
+    /// Опсывает список контактов
     /// </summary>
     public class Project
     {
@@ -9,18 +9,6 @@
         /// Список всех контактов
         /// </summary>
         private List<Contact> _contactsList;
-
-        /// <summary>
-        /// Возвращает список контактов или добавляет нового пользователя в список контактов 
-        /// </summary>
-        public List<Contact> Contacts 
-        {
-            get { return _contactsList; }
-            set 
-            {
-                _contactsList = SortContacts(value);
-            }
-        }
 
         /// <summary>
         /// Сортировка контактов
@@ -48,6 +36,18 @@
         public List<Contact> SearchContact(string fullName)
         {
             return _contactsList; //дописать
+        }
+
+        /// <summary>
+        /// Возвращает список контактов или добавляет нового пользователя в список контактов 
+        /// </summary>
+        public List<Contact> ContactsList
+        {
+            get { return _contactsList; }
+            set
+            {
+                _contactsList = SortContacts(value);
+            }
         }
     }
 }

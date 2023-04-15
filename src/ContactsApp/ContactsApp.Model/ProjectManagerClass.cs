@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ContactsApp.Model
 {
-    internal class ProjectManagerClass
+    /// <summary>
+    /// Сериализация и десериализация списка контактов
+    /// </summary>
+    public class ProjectManager
     {
+        //string fileName = "ContactList.json";
+        //string jsonString = JsonSerializer.Serialize();
+        //File.WriteAllText(fileName, jsonString);
     }
 }
