@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ContactsApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace ContactsApp.View
 {
     public partial class MainForm : Form
     {
+        private Project _project;
+
         public MainForm()
         {
             InitializeComponent();
