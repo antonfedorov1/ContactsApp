@@ -13,7 +13,41 @@ namespace ContactsApp.View
 {
     public partial class MainForm : Form
     {
-        private Project _project;
+        private Project _project = new Project();
+
+        private void UpdateListBox(Project project) 
+        {
+            ContactsListBox.Items.Clear();
+
+            foreach (var item in project.Contacts)
+            {
+                ContactsListBox.Items.Add(item.FullName);
+            }
+        }
+
+        private void AddContact()
+        {
+            var rand = new Random();
+            List<string> testContacts = new List<string>() 
+            {
+                "Левина Ксения", "Александрова София", "Бирюков Богдан", "Борисов Игорь",
+                "Михайлов Павел", "Одинцова Эмилия", "Пименова Антонина", "Максимова Анна",
+                "Тихомиров Максим", "Бычкова Варвара", "Столярова Юлия", "Ульянов Александр",
+                "Смирнов Максим", "Попов Всеволод", "Леонов Тигран", "Тарасова Стефания", 
+                "Косарева Милана", "Калинин Даниил", "Козлов Евгений",
+            };
+
+             Project project = new Project();
+             Contact contact = new Contact();
+
+             foreach (var item in testContacts)
+             {
+                 contact.FullName = testContacts[rand.Next(testContacts.Count)];
+                 project.Contacts.Add(contact);
+             }
+
+             _project = project;
+        }
 
         public MainForm()
         {
@@ -22,9 +56,11 @@ namespace ContactsApp.View
 
         private void AddContactbutton_Click(object sender, EventArgs e)
         {
-            var form = new ContactForm();
-            form.ShowDialog();
-            Activate();
+            AddContact();
+            UpdateListBox(_project);
+            //var form = new ContactForm();
+            //form.ShowDialog();
+            //Activate();
         }
 
         private void EditContactbutton_Click(object sender, EventArgs e)

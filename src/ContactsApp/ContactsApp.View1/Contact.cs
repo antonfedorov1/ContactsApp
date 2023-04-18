@@ -58,7 +58,7 @@
         private string _idVK;
 
         /// <summary>
-        /// Возвращает и задает фамилия и имя контакта.
+        /// Возвращает и задает фамилию и имя контакта.
         /// </summary>
         public string FullName
         {
@@ -186,6 +186,11 @@
         /// </summary>
         public Contact()
         {
+            FullName = "";
+            EMail = "";
+            PhoneNumber = "";
+            DateOfBirth = DateTime.Now;
+            IdVK = "";
         }
 
         /// <summary>
