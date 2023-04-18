@@ -143,11 +143,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ContactsApp.Model\ContactsApp.Model.csproj">
-      <Project>{5948bcf8-95b9-489e-990e-c81caeab981c}</Project>
-      <Name>ContactsApp.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
