@@ -37,14 +37,14 @@ namespace ContactsApp.View
                 "Косарева Милана", "Калинин Даниил", "Козлов Евгений",
             };
 
-             Project project = new Project();
-             Contact contact = new Contact();
+            Project project = new Project();
+            Contact contact = new Contact("-", "-", "+7 (000) 000-00-00", DateTime.Now, "-");
 
-             foreach (var item in testContacts)
-             {
-                 contact.FullName = testContacts[rand.Next(testContacts.Count)];
-                 project.Contacts.Add(contact);
-             }
+            for (int i = 0; i < testContacts.Count; i++)
+            {
+                contact.FullName = testContacts[rand.Next(testContacts.Count)];
+                project.Contacts.Add(contact);
+            }
 
              _project = project;
         }
