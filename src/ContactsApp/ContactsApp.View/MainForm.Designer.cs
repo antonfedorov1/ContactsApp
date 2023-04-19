@@ -151,6 +151,7 @@
             this.RemoveContactbutton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.RemoveContactbutton.TabIndex = 2;
             this.RemoveContactbutton.TabStop = false;
+            this.RemoveContactbutton.Click += new System.EventHandler(this.RemoveContactbutton_Click);
             this.RemoveContactbutton.MouseEnter += new System.EventHandler(this.RemoveContactbutton_MouseEnter);
             this.RemoveContactbutton.MouseLeave += new System.EventHandler(this.RemoveContactbutton_MouseLeave);
             // 
@@ -192,6 +193,7 @@
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(238, 376);
             this.ContactsListBox.TabIndex = 0;
+            this.ContactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // RightPanel
             // 
@@ -385,6 +387,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ContactsApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.MainForm_HelpRequested);
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.LeftPanel.ResumeLayout(false);
