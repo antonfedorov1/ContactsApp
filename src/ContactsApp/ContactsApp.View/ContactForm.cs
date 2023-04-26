@@ -149,7 +149,8 @@
             {
                 FullNameTextBox.BackColor = Color.LightPink;
                 _fullNameError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } 
         }
 
@@ -165,7 +166,8 @@
             {
                 EmailTextBox.BackColor = Color.LightPink;
                 _eMailError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -181,7 +183,8 @@
             {
                 PhoneNumberTextBox.BackColor = Color.LightPink;
                 _phoneNumberError = exception.Message;
-                //MessageBox.Show(exception.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show(exception.Message, "Предупреждение",
+                //MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -197,7 +200,8 @@
             {
                 DateOfBirthDateTimePicker.BackColor = Color.LightPink;
                 _dateOfBirthError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -213,7 +217,8 @@
             {
                 VKTextBox.BackColor = Color.LightPink;
                 _idVKError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
