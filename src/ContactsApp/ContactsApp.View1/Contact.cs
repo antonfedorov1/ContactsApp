@@ -71,7 +71,7 @@
                 if (value.Length <= 0 || value.Length > MaxLineLengthFullName)
                 {
                     throw new ArgumentException($"Длина поля Полное имя не должно быть меньше" +
-                        $" 0 и больше {MaxLineLengthFullName} символов.");
+                        $" 0 и больше {MaxLineLengthFullName} символов. ");
                 }
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 value = textInfo.ToTitleCase(value);
@@ -93,7 +93,7 @@
                 if (value.Length <= 0 || value.Length > MaxLineLengthEMail)
                 {
                     throw new ArgumentException($"Длина поля E-mail не должно быть меньше" +
-                        $"0 и больше {MaxLineLengthEMail} символов.");
+                        $" 0 и больше {MaxLineLengthEMail} символов. ");
                 }
                 _eMail = value;
             }
@@ -114,7 +114,7 @@
                 if (!validatePhoneNumberRegex.IsMatch(value))
                 {
                     throw new ArgumentException($"Номер телефона может содержать только" +
-                        $"цифры и знаки ‘+’, ‘(’ ‘)’ ‘-’ ‘ ’. Формат номера: +7 (000) 000-00-00");
+                        $"цифры и знаки ‘+’, ‘(’ ‘)’ ‘-’ ‘ ’. Формат номера: +7 (000) 000-00-00. ");
                 }
                 _phoneNumber = value;
             }
@@ -137,7 +137,7 @@
                 if (value > nowDate || value < minDate)
                 {
                     throw new ArgumentException($"Дата рождения не может быть более текущей " +
-                        $"даты и не может быть менее 1900 года.");
+                        $"даты и не может быть менее 1900 года. ");
                 }
                 _dateOfBirth = value;
             }
@@ -156,8 +156,8 @@
             {
                 if (value.Length <= 0 || value.Length > MaxLineLengthIdVK)
                 {
-                    throw new ArgumentException($"Длина поля ID Вконтакте не должно быть меньше" +
-                        $"0 и больше {MaxLineLengthIdVK} символов.");
+                    throw new ArgumentException($"Длина поля ID Вконтакте не должно быть меньше " +
+                        $"0 и больше {MaxLineLengthIdVK} символов. ");
                 }
                 _idVK = value;
             }
