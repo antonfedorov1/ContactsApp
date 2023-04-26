@@ -77,6 +77,7 @@
             if (dialogResult == DialogResult.Yes)
             {
                 _project.Contacts.RemoveAt(index);
+                ClearSelectedContact();
             }
             else if (dialogResult == DialogResult.No)
             {
