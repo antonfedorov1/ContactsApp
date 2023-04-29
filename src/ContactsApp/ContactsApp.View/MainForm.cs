@@ -89,11 +89,12 @@
         /// <param name="index">Индекс выбранного контакта в ContactsListBox.</param>
         private void UpdateSelectedContact(int index)
         {
-            FullNameTextBox.Text = _project.Contacts[index].FullName;
-            EmailTextBox.Text = _project.Contacts[index].EMail;
-            PhoneNumberTextBox.Text = _project.Contacts[index].PhoneNumber;
-            DateOfBirthTextBox.Text = System.Convert.ToString(_project.Contacts[index].DateOfBirth);
-            VKTextBox.Text = _project.Contacts[index].IdVK;
+            var contact = _project.Contacts[index];
+            FullNameTextBox.Text = contact.FullName;
+            EmailTextBox.Text = contact.EMail;
+            PhoneNumberTextBox.Text = contact.PhoneNumber;
+            DateOfBirthTextBox.Text = System.Convert.ToString(contact.DateOfBirth);
+            VKTextBox.Text = contact.IdVK;
         }
 
         /// <summary>
