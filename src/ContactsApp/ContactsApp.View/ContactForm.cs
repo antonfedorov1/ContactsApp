@@ -74,34 +74,34 @@
         /// <returns>true - нет ошибок. false - есть ошибки.</returns>
         private bool CheckFormOnErrors()
         {
-            string fullMessageErrors = "";
+            string fullErrorsMessage = "";
 
             if (_fullNameError.Length > 1)
             {
-                fullMessageErrors = _fullNameError;
+                fullErrorsMessage = _fullNameError;
             }
             if (_eMailError.Length > 1)
             {
-                fullMessageErrors += "\n" + _eMailError;
+                fullErrorsMessage += "\n" + _eMailError;
             }
             if (_phoneNumberError.Length > 1)
             {
-                fullMessageErrors += "\n" + _phoneNumberError;
+                fullErrorsMessage += "\n" + _phoneNumberError;
             }
             if (_dateOfBirthError.Length > 1)
             {
-                fullMessageErrors += "\n" + _dateOfBirthError;
+                fullErrorsMessage += "\n" + _dateOfBirthError;
             }
             if (_idVKError.Length > 1)
             {
-                fullMessageErrors += "\n" + _idVKError;
+                fullErrorsMessage += "\n" + _idVKError;
             }
 
             if (_fullNameError.Length > 1 || _eMailError.Length > 1 ||
                 _phoneNumberError.Length > 1 || _dateOfBirthError.Length > 1 ||
                 _idVKError.Length > 1)
             {
-                MessageBox.Show(fullMessageErrors, "Предупреждение",
+                MessageBox.Show(fullErrorsMessage, "Предупреждение",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
