@@ -51,7 +51,7 @@
 
             for (int i = 0; i < testContacts.Count; i++)
             {
-                Contact contact = new Contact(" ", " ", "+7 (000) 000-00-00", DateTime.Today, " ");
+                Contact contact = new Contact(" ", "y@yandex.ru", "+7 (000) 000-00-00", DateTime.Today, "id32732");
                 contact.FullName = testContacts[rand.Next(testContacts.Count)];
                 project.Contacts.Add(contact);
                 
