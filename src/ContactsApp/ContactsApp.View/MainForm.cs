@@ -16,6 +16,8 @@
         public MainForm()
         {
             InitializeComponent();
+            AddContact();
+            UpdateListBox();
         }
 
         /// <summary>
@@ -23,11 +25,7 @@
         /// </summary>
         private void UpdateListBox() 
         {
-            if (_project.Contacts != null)
-            {
-                ContactsListBox.Items.Clear();
-            }
-            
+            ContactsListBox.Items.Clear();
             foreach (var item in _project.Contacts)
             {
                 ContactsListBox.Items.Add(item.FullName);
