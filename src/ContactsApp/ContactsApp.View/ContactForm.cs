@@ -2,52 +2,52 @@
 {
     using ContactsApp.Model;
     using System;
+    using System.Collections.Generic;
     using System.Drawing;
+    using System.Linq;
     using System.Windows.Forms;
 
     public partial class ContactForm : Form
     {
         /// <summary>
-        /// Экземпляр класса Contact 
+        /// Цвет, если всё правильно.
         /// </summary>
-        private Contact _contact = 
-            new Contact(" ", " ", "+7 (000) 000-00-00", DateTime.Today, " ");
+        private Color correctСolor = Color.White;
 
         /// <summary>
-        /// Сообщение об ошибке в поле _fullName.
+        /// Цвет, если есть ошибка.
         /// </summary>
-        private string _fullNameError;
+        private Color errorColor = Color.LightPink;
 
         /// <summary>
-        /// Сообщение об ошибке в поле _eMail.
+        /// Словарь ошибок полей.
+        /// TKey - это ошибка в соответствующем поле.
+        /// TValue - это сообщение ошибки.
         /// </summary>
-        private string _eMailError;
+        private Dictionary<string, string> dictionaryErrors = new Dictionary<string, string>()
+        {
+            { "fullNameError", "" },
+            { "eMailError", "" },
+            { "phoneNumberError", "" },
+            { "dateOfBirthError", "" },
+            { "idVKError", "" }
+        };
 
         /// <summary>
-        /// Сообщение об ошибке в поле _phoneNumber.
+        /// Экземпляр класса Contact.
         /// </summary>
-        private string _phoneNumberError;
-
-        /// <summary>
-        /// Сообщение об ошибке в поле _dateOfBirth.
-        /// </summary>
-        private string _dateOfBirthError;
-
-        /// <summary>
-        /// Сообщение об ошибке в поле _idVK.
-        /// </summary>
-        private string _idVKError;
+        private Contact _contact = new Contact();
 
         public ContactForm()
         {
             InitializeComponent();
-            UpdataForm();
+            UpdateForm();
         }
 
         /// <summary>
         /// Заполняет поля формы данными из экземпляра класса Contact.
         /// </summary>
-        private void UpdataForm()
+        private void UpdateForm()
         {
             FullNameTextBox.Text = _contact.FullName;
             EmailTextBox.Text = _contact.EMail;
@@ -74,34 +74,19 @@
         /// <returns>true - нет ошибок. false - есть ошибки.</returns>
         private bool CheckFormOnErrors()
         {
+            var errors = new List<string>();
+            foreach (var error in dictionaryErrors)
+            {
+                errors.Add(error.Value);
+            }
+            errors = errors.Where(error => error != "").ToList();
+
             string fullErrorsMessage = "";
+            fullErrorsMessage = " - " + string.Join("\n - ", errors);
 
-            if (_fullNameError.Length > 1)
+            if (fullErrorsMessage.Length > 3) //Length > 3 because fullErrorsMessage always has " - " , which is three characters.
             {
-                fullErrorsMessage = _fullNameError;
-            }
-            if (_eMailError.Length > 1)
-            {
-                fullErrorsMessage += "\n" + _eMailError;
-            }
-            if (_phoneNumberError.Length > 1)
-            {
-                fullErrorsMessage += "\n" + _phoneNumberError;
-            }
-            if (_dateOfBirthError.Length > 1)
-            {
-                fullErrorsMessage += "\n" + _dateOfBirthError;
-            }
-            if (_idVKError.Length > 1)
-            {
-                fullErrorsMessage += "\n" + _idVKError;
-            }
-
-            if (_fullNameError.Length > 1 || _eMailError.Length > 1 ||
-                _phoneNumberError.Length > 1 || _dateOfBirthError.Length > 1 ||
-                _idVKError.Length > 1)
-            {
-                MessageBox.Show(fullErrorsMessage, "Предупреждение",
+                MessageBox.Show(fullErrorsMessage, "Errors",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -120,9 +105,86 @@
             }
         }
 
+        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            dictionaryErrors["fullNameError"] = "";
+            FullNameTextBox.BackColor = correctСolor;
+            try
+            {
+                _contact.FullName = FullNameTextBox.Text;
+            }
+            catch (ArgumentException exception)
+            {
+                FullNameTextBox.BackColor = errorColor;
+                dictionaryErrors["fullNameError"] = exception.Message;
+            }
+        }
+
+        private void EmailTextBox_TextChanged(object sender, EventArgs e)
+        {
+            EmailTextBox.BackColor = correctСolor;
+            dictionaryErrors["eMailError"] = "";
+            try
+            {
+                _contact.EMail = EmailTextBox.Text;
+            }
+            catch (ArgumentException exception)
+            {
+                EmailTextBox.BackColor = errorColor;
+                dictionaryErrors["eMailError"] = exception.Message;
+            }
+        }
+
+        private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PhoneNumberTextBox.BackColor = correctСolor;
+            dictionaryErrors["phoneNumberError"] = "";
+            try
+            {
+                _contact.PhoneNumber = PhoneNumberTextBox.Text;
+            }
+            catch (ArgumentException exception)
+            {
+                PhoneNumberTextBox.BackColor = errorColor;
+                dictionaryErrors["phoneNumberError"] = exception.Message;
+            }
+        }
+
+        private void DateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 01, 01);
+            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
+
+            DateOfBirthDateTimePicker.BackColor = correctСolor;
+            dictionaryErrors["dateOfBirthError"] = "";
+            try
+            {
+                _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
+            }
+            catch (ArgumentException exception)
+            {
+                DateOfBirthDateTimePicker.BackColor = errorColor;
+                dictionaryErrors["dateOfBirthError"] = exception.Message;
+            }
+        }
+
+        private void VKTextBox_TextChanged(object sender, EventArgs e)
+        {
+            VKTextBox.BackColor = correctСolor;
+            dictionaryErrors["idVKError"] = "";
+            try
+            {
+                _contact.IdVK = VKTextBox.Text;
+            }
+            catch (ArgumentException exception)
+            {
+                VKTextBox.BackColor = errorColor;
+                dictionaryErrors["idVKError"] = exception.Message;
+            }
+        }
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            Close();    
+            Close();
         }
 
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
@@ -135,91 +197,6 @@
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
             AddPhotoButton.BackColor = Color.White;
-        }
-
-        private void FullNameTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                FullNameTextBox.BackColor= Color.White;
-                _contact.FullName = FullNameTextBox.Text;
-                _fullNameError = string.Empty;
-            }
-            catch (ArgumentException exception)
-            {
-                FullNameTextBox.BackColor = Color.LightPink;
-                _fullNameError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } 
-        }
-
-        private void EmailTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                EmailTextBox.BackColor = Color.White;
-                _contact.EMail = EmailTextBox.Text;
-                _eMailError = string.Empty;
-            }
-            catch (ArgumentException exception)
-            {
-                EmailTextBox.BackColor = Color.LightPink;
-                _eMailError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                PhoneNumberTextBox.BackColor = Color.White;
-                _contact.PhoneNumber = PhoneNumberTextBox.Text;
-                _phoneNumberError = string.Empty;
-            }
-            catch (ArgumentException exception)
-            {
-                PhoneNumberTextBox.BackColor = Color.LightPink;
-                _phoneNumberError = exception.Message;
-                //MessageBox.Show(exception.Message, "Предупреждение",
-                //MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void DateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                DateOfBirthDateTimePicker.BackColor = Color.White;
-                _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
-                _dateOfBirthError = string.Empty;
-            }
-            catch (ArgumentException exception)
-            {
-                DateOfBirthDateTimePicker.BackColor = Color.LightPink;
-                _dateOfBirthError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void VKTextBox_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                VKTextBox.BackColor = Color.White;
-                _contact.IdVK = VKTextBox.Text;
-                _idVKError = string.Empty;
-            }
-            catch (ArgumentException exception)
-            {
-                VKTextBox.BackColor = Color.LightPink;
-                _idVKError = exception.Message;
-                MessageBox.Show(exception.Message, "Предупреждение",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
     }
 }

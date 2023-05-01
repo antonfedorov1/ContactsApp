@@ -102,9 +102,9 @@
             this.PhoneNumberLabel.Location = new System.Drawing.Point(119, 112);
             this.PhoneNumberLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
-            this.PhoneNumberLabel.Size = new System.Drawing.Size(78, 13);
+            this.PhoneNumberLabel.Size = new System.Drawing.Size(81, 13);
             this.PhoneNumberLabel.TabIndex = 15;
-            this.PhoneNumberLabel.Text = "PhoneNumber:";
+            this.PhoneNumberLabel.Text = "Phone Number:";
             // 
             // EmailTextBox
             // 
@@ -151,6 +151,8 @@
             // DateOfBirthDateTimePicker
             // 
             this.DateOfBirthDateTimePicker.Location = new System.Drawing.Point(119, 178);
+            this.DateOfBirthDateTimePicker.MaxDate = new System.DateTime(2023, 5, 1, 0, 0, 0, 0);
+            this.DateOfBirthDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
             this.DateOfBirthDateTimePicker.Size = new System.Drawing.Size(180, 20);
             this.DateOfBirthDateTimePicker.TabIndex = 21;

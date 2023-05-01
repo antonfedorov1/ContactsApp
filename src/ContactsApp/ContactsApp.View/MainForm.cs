@@ -69,8 +69,8 @@
             {
                 return;
             }
-            DialogResult dialogResult = MessageBox.Show("Вы действительно хотите удалить " 
-                + _project.Contacts[index].FullName, "Предупреждение", MessageBoxButtons.YesNo
+            DialogResult dialogResult = MessageBox.Show("Do you really want to delete "
+                + _project.Contacts[index].FullName + "?", "Warning", MessageBoxButtons.YesNo
                 , MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
@@ -131,6 +131,35 @@
             Activate();
         }
 
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                ClearSelectedContact();
+            }
+            else
+            {
+                UpdateSelectedContact(ContactsListBox.SelectedIndex);
+            }
+
+        }
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var isFormClosing = MessageBox.Show("Do you really want to leave?", "Exiting the program",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            e.Cancel = !(isFormClosing == DialogResult.Yes);
+        }
+
+        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            using (var helpForm = new AboutForm())
+            {
+                helpForm.ShowDialog();
+                Activate();
+            }
+        }
+
         private void AddContactbutton_MouseEnter(object sender, EventArgs e)
         {
             AddContactbutton.Image = Properties.Resources.add_contact_32x32;
@@ -172,15 +201,6 @@
             BirthdayPanel.Visible = false;
         }
 
-        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            using (var helpForm = new AboutForm())
-            {
-                helpForm.ShowDialog();
-                Activate();
-            }
-        }
-
         private void FullNameTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -204,27 +224,6 @@
         private void VKTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-        }
-
-        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ContactsListBox.SelectedIndex == -1)
-            {
-                ClearSelectedContact();
-            }
-            else
-            {
-                UpdateSelectedContact(ContactsListBox.SelectedIndex);
-            }
-            
-        }
-
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var isFormClosing = MessageBox.Show("Вы действительно хотите выйти?", "Выход из программы",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            e.Cancel = !(isFormClosing == DialogResult.Yes);
         }
     }
 }

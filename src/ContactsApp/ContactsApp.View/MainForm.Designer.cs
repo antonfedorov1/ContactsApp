@@ -323,9 +323,9 @@
             this.PhoneNumberLabel.Location = new System.Drawing.Point(110, 105);
             this.PhoneNumberLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
-            this.PhoneNumberLabel.Size = new System.Drawing.Size(78, 13);
+            this.PhoneNumberLabel.Size = new System.Drawing.Size(81, 13);
             this.PhoneNumberLabel.TabIndex = 5;
-            this.PhoneNumberLabel.Text = "PhoneNumber:";
+            this.PhoneNumberLabel.Text = "Phone Number:";
             // 
             // EmailTextBox
             // 

@@ -68,10 +68,10 @@
             }
             set
             {
-                if (value.Length <= 0 || value.Length > MaxLineLengthFullName)
+                if (value.Length > MaxLineLengthFullName)
                 {
-                    throw new ArgumentException($"Длина поля Полное имя не должно быть меньше" +
-                        $" 0 и больше {MaxLineLengthFullName} символов. ");
+                    throw new ArgumentException($"The length of the Full Name field must not be " +
+                         $"more than {MaxLineLengthFullName} characters.");
                 }
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 value = textInfo.ToTitleCase(value);
@@ -90,10 +90,10 @@
             }
             set
             {
-                if (value.Length <= 0 || value.Length > MaxLineLengthEMail)
+                if (value.Length > MaxLineLengthEMail)
                 {
-                    throw new ArgumentException($"Длина поля E-mail не должно быть меньше" +
-                        $" 0 и больше {MaxLineLengthEMail} символов. ");
+                    throw new ArgumentException($"The length of the E-mail field must not be " +
+                         $"greater than {MaxLineLengthEMail} characters.");
                 }
                 _eMail = value;
             }
@@ -113,8 +113,8 @@
                 Regex validatePhoneNumberRegex = new Regex(PhoneNumberRegex);
                 if (!validatePhoneNumberRegex.IsMatch(value))
                 {
-                    throw new ArgumentException($"Номер телефона может содержать только" +
-                        $"цифры и знаки ‘+’, ‘(’ ‘)’ ‘-’ ‘ ’. Формат номера: +7 (000) 000-00-00. ");
+                    throw new ArgumentException($"Phone Number can only contain numbers and " +
+                        $"signs ‘+’, ‘(’ ‘)’ ‘-’ ‘ ’. Number format: +7 (000) 000-00-00.");
                 }
                 _phoneNumber = value;
             }
@@ -132,12 +132,12 @@
             set
             {
                 DateTime minDate = new DateTime(1900, 1, 1);
-                DateTime nowDate = DateTime.Now;
+                DateTime nowDate = DateTime.Today;
 
                 if (value > nowDate || value < minDate)
                 {
-                    throw new ArgumentException($"Дата рождения не может быть более текущей " +
-                        $"даты и не может быть менее 1900 года. ");
+                    throw new ArgumentException($"Date of Birth cannot be greater than the current " +
+                         $"date and cannot be less than 1900.");
                 }
                 _dateOfBirth = value;
             }
@@ -154,10 +154,10 @@
             }
             set
             {
-                if (value.Length <= 0 || value.Length > MaxLineLengthIdVK)
+                if (value.Length > MaxLineLengthIdVK)
                 {
-                    throw new ArgumentException($"Длина поля ID Вконтакте не должно быть меньше " +
-                        $"0 и больше {MaxLineLengthIdVK} символов. ");
+                    throw new ArgumentException($"The length of the VK field should not be " +
+                         $"more than {MaxLineLengthIdVK} characters.");
                 }
                 _idVK = value;
             }
@@ -188,8 +188,8 @@
         {
             FullName = "";
             EMail = "";
-            PhoneNumber = "";
-            DateOfBirth = DateTime.Now;
+            PhoneNumber = "+7 (000) 000-00-00";
+            DateOfBirth = DateTime.Today;
             IdVK = "";
         }
 
