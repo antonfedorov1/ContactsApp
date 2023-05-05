@@ -4,6 +4,7 @@
     using System;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Reflection;
     using System.Windows.Forms;
 
     public partial class MainForm : Form
@@ -16,7 +17,6 @@
         public MainForm()
         {
             InitializeComponent();
-            AddContact();
             UpdateListBox();
         }
 
@@ -37,7 +37,7 @@
         /// </summary>
         private void AddContact()
         {
-            var rand = new Random();
+            /*var rand = new Random();
             List<string> testContacts = new List<string>() 
             {
                 "Левина Ксения", "Александрова София", "Бирюков Богдан", "Борисов Игорь",
@@ -56,7 +56,30 @@
                 project.Contacts.Add(contact);
                 
             }
-            _project = project;
+            _project = project;*/
+            ContactForm contactForm = new ContactForm();
+            DialogResult = contactForm.ShowDialog();
+
+            if (DialogResult == DialogResult.OK)
+            {
+                _project.Contacts.Add(contactForm.Contact);
+            }
+
+        }
+
+        private void EditContact(int index)
+        {
+            if (index == -1)
+            {
+                return;
+            }
+
+            ContactForm contactForm = new ContactForm((Contact)_project.Contacts[index].Clone());
+            DialogResult = contactForm.ShowDialog();
+            if (DialogResult == DialogResult.OK)
+            {
+                _project.Contacts[index] = contactForm.Contact;
+            }
         }
 
         /// <summary>
@@ -89,6 +112,10 @@
         /// <param name="index">Индекс выбранного контакта в ContactsListBox.</param>
         private void UpdateSelectedContact(int index)
         {
+            if (index == -1)
+            {
+                return;
+            }
             var contact = _project.Contacts[index];
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.EMail;
@@ -113,22 +140,20 @@
         {
             AddContact();
             UpdateListBox();
-            //var form = new ContactForm();
-            //form.ShowDialog();
-            //Activate();
+        }
+
+        private void EditContactbutton_Click(object sender, EventArgs e)
+        {
+            var index = ContactsListBox.SelectedIndex;
+            EditContact(index);
+            UpdateSelectedContact(index);
+            UpdateListBox();
         }
 
         private void RemoveContactbutton_Click(object sender, EventArgs e)
         {
             RemoveContact(ContactsListBox.SelectedIndex);
             UpdateListBox();
-        }
-
-        private void EditContactbutton_Click(object sender, EventArgs e)
-        {
-            var form = new ContactForm();
-            form.ShowDialog();
-            Activate();
         }
 
         private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)

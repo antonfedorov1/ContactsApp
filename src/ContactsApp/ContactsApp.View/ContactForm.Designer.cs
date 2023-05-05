@@ -38,11 +38,11 @@
             this.EmailLabel = new System.Windows.Forms.Label();
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
-            this.DateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.OKButton = new System.Windows.Forms.Button();
             this.ButtonContactAppPanel = new System.Windows.Forms.Panel();
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddPhotoButton = new System.Windows.Forms.PictureBox();
+            this.DateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.ButtonContactAppPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddPhotoButton)).BeginInit();
@@ -64,7 +64,6 @@
             this.VKTextBox.Name = "VKTextBox";
             this.VKTextBox.Size = new System.Drawing.Size(180, 20);
             this.VKTextBox.TabIndex = 20;
-            this.VKTextBox.Text = "id834578345";
             this.VKTextBox.TextChanged += new System.EventHandler(this.VKTextBox_TextChanged);
             // 
             // VKLabel
@@ -93,7 +92,6 @@
             this.PhoneNumberTextBox.Name = "PhoneNumberTextBox";
             this.PhoneNumberTextBox.Size = new System.Drawing.Size(180, 20);
             this.PhoneNumberTextBox.TabIndex = 16;
-            this.PhoneNumberTextBox.Text = "+7 (999) 670-02-11";
             this.PhoneNumberTextBox.TextChanged += new System.EventHandler(this.PhoneNumberTextBox_TextChanged);
             // 
             // PhoneNumberLabel
@@ -114,7 +112,6 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(378, 20);
             this.EmailTextBox.TabIndex = 14;
-            this.EmailTextBox.Text = "milo@yandex.ru";
             this.EmailTextBox.TextChanged += new System.EventHandler(this.EmailTextBox_TextChanged);
             // 
             // EmailLabel
@@ -136,7 +133,6 @@
             this.FullNameTextBox.Name = "FullNameTextBox";
             this.FullNameTextBox.Size = new System.Drawing.Size(378, 20);
             this.FullNameTextBox.TabIndex = 12;
-            this.FullNameTextBox.Text = "Anton";
             this.FullNameTextBox.TextChanged += new System.EventHandler(this.FullNameTextBox_TextChanged);
             // 
             // FullNameLabel
@@ -147,17 +143,6 @@
             this.FullNameLabel.Size = new System.Drawing.Size(57, 13);
             this.FullNameLabel.TabIndex = 11;
             this.FullNameLabel.Text = "Full Name:";
-            // 
-            // DateOfBirthDateTimePicker
-            // 
-            this.DateOfBirthDateTimePicker.Location = new System.Drawing.Point(119, 178);
-            this.DateOfBirthDateTimePicker.MaxDate = new System.DateTime(2023, 5, 1, 0, 0, 0, 0);
-            this.DateOfBirthDateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
-            this.DateOfBirthDateTimePicker.Size = new System.Drawing.Size(180, 20);
-            this.DateOfBirthDateTimePicker.TabIndex = 21;
-            this.DateOfBirthDateTimePicker.Value = new System.DateTime(2000, 1, 18, 10, 54, 0, 0);
-            this.DateOfBirthDateTimePicker.ValueChanged += new System.EventHandler(this.DateOfBirthDateTimePicker_ValueChanged);
             // 
             // OKButton
             // 
@@ -201,15 +186,23 @@
             this.AddPhotoButton.MouseEnter += new System.EventHandler(this.AddPhotoButton_MouseEnter);
             this.AddPhotoButton.MouseLeave += new System.EventHandler(this.AddPhotoButton_MouseLeave);
             // 
+            // DateOfBirthDateTimePicker
+            // 
+            this.DateOfBirthDateTimePicker.Location = new System.Drawing.Point(119, 179);
+            this.DateOfBirthDateTimePicker.Name = "DateOfBirthDateTimePicker";
+            this.DateOfBirthDateTimePicker.Size = new System.Drawing.Size(180, 20);
+            this.DateOfBirthDateTimePicker.TabIndex = 24;
+            this.DateOfBirthDateTimePicker.ValueChanged += new System.EventHandler(this.DateOfBirthDateTimePicker_ValueChanged);
+            // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(509, 321);
+            this.Controls.Add(this.DateOfBirthDateTimePicker);
             this.Controls.Add(this.AddPhotoButton);
             this.Controls.Add(this.ButtonContactAppPanel);
-            this.Controls.Add(this.DateOfBirthDateTimePicker);
             this.Controls.Add(this.VKTextBox);
             this.Controls.Add(this.VKLabel);
             this.Controls.Add(this.DateOfBirthLabel);
@@ -246,10 +239,10 @@
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.TextBox FullNameTextBox;
         private System.Windows.Forms.Label FullNameLabel;
-        private System.Windows.Forms.DateTimePicker DateOfBirthDateTimePicker;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Panel ButtonContactAppPanel;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.PictureBox AddPhotoButton;
+        private System.Windows.Forms.DateTimePicker DateOfBirthDateTimePicker;
     }
 }

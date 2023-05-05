@@ -35,9 +35,32 @@
         /// </summary>
         private Contact _contact = new Contact();
 
+        public Contact Contact
+        { 
+            get 
+            { 
+                return _contact; 
+            }
+            set 
+            { 
+                _contact = value; 
+                UpdateForm();
+            }
+        }
         public ContactForm()
         {
             InitializeComponent();
+            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 01, 01);
+            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
+            Contact = new Contact();
+        }
+
+        public ContactForm(Contact contact)
+        {
+            InitializeComponent();
+            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 01, 01);
+            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
+            Contact = contact;
             UpdateForm();
         }
 
@@ -49,7 +72,7 @@
             FullNameTextBox.Text = _contact.FullName;
             EmailTextBox.Text = _contact.EMail;
             PhoneNumberTextBox.Text = _contact.PhoneNumber;
-            DateOfBirthDateTimePicker.Text = System.Convert.ToString(_contact.DateOfBirth);
+            DateOfBirthDateTimePicker.Value = _contact.DateOfBirth;
             VKTextBox.Text = _contact.IdVK;
         }
 
@@ -98,8 +121,14 @@
             if (CheckFormOnErrors())
             {
                 UpdateContact();
+                DialogResult = DialogResult.OK;
                 Close();
             }
+        }
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
@@ -149,9 +178,6 @@
 
         private void DateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 01, 01);
-            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
-
             DateOfBirthDateTimePicker.BackColor = correctСolor;
             dictionaryErrors["dateOfBirthError"] = "";
             try
@@ -178,10 +204,6 @@
                 VKTextBox.BackColor = errorColor;
                 dictionaryErrors["idVKError"] = exception.Message;
             }
-        }
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
