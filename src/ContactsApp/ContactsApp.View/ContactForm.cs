@@ -26,11 +26,8 @@
         /// </summary>
         private Dictionary<string, string> dictionaryErrors = new Dictionary<string, string>()
         {
-            { "fullNameError", "" },
-            { "eMailError", "" },
-            { "phoneNumberError", "" },
-            { "dateOfBirthError", "" },
-            { "idVKError", "" }
+            { "fullNameError", "" }, { "eMailError", "" }, { "phoneNumberError", "" },
+            { "dateOfBirthError", "" }, { "idVKError", "" }
         };
 
         /// <summary>
@@ -84,7 +81,7 @@
             string fullErrorsMessage = "";
             fullErrorsMessage = " - " + string.Join("\n - ", errors);
 
-            if (fullErrorsMessage.Length > 3) //Length > 3 because fullErrorsMessage always has " - " , which is three characters.
+            if (fullErrorsMessage.Length > 3) //Длина > 3, потому что в fullErrorsMessage всегда есть " - ", это три символа.
             {
                 MessageBox.Show(fullErrorsMessage, "Errors",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
