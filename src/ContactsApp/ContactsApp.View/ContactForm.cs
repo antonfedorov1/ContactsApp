@@ -35,6 +35,9 @@
         /// </summary>
         private Contact _contact = new Contact();
 
+        /// <summary>
+        /// Возвращает и задает экземпляр класса Contact.
+        /// </summary>
         public Contact Contact
         { 
             get 
@@ -47,6 +50,10 @@
                 UpdateForm();
             }
         }
+
+        /// <summary>
+        /// Конструтор ContactForm без параметров.
+        /// </summary>
         public ContactForm()
         {
             InitializeComponent();
@@ -55,6 +62,10 @@
             Contact = new Contact();
         }
 
+        /// <summary>
+        /// Конструтор ContactForm c параметром.
+        /// </summary>
+        /// <param name="contact">Экземпляр класса Contact.</param>
         public ContactForm(Contact contact)
         {
             InitializeComponent();
