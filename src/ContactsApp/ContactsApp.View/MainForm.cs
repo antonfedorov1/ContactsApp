@@ -38,9 +38,8 @@
         private void AddContact()
         {
             ContactForm contactForm = new ContactForm();
-            DialogResult = contactForm.ShowDialog();
 
-            if (DialogResult == DialogResult.OK)
+            if (contactForm.ShowDialog() == DialogResult.OK)
             {
                 _project.Contacts.Add(contactForm.Contact);
             }
@@ -53,9 +52,10 @@
                 return;
             }
 
-            ContactForm contactForm = new ContactForm((Contact)_project.Contacts[index].Clone());
-            DialogResult = contactForm.ShowDialog();
-            if (DialogResult == DialogResult.OK)
+            ContactForm contactForm = new ContactForm();
+            contactForm.Contact = _project.Contacts[index];
+
+            if (contactForm.ShowDialog() == DialogResult.OK)
             {
                 _project.Contacts[index] = contactForm.Contact;
             }
@@ -125,8 +125,8 @@
         {
             var index = ContactsListBox.SelectedIndex;
             EditContact(index);
-            UpdateSelectedContact(index);
             UpdateListBox();
+            UpdateSelectedContact(index);
         }
 
         private void RemoveContactbutton_Click(object sender, EventArgs e)

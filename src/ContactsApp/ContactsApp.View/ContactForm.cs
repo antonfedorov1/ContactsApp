@@ -12,12 +12,22 @@
         /// <summary>
         /// Цвет, если всё правильно.
         /// </summary>
-        private Color correctСolor = Color.White;
+        private Color _correctСolor = Color.White;
 
         /// <summary>
         /// Цвет, если есть ошибка.
         /// </summary>
-        private Color errorColor = Color.LightPink;
+        private Color _errorColor = Color.LightPink;
+
+        /// <summary>
+        /// Минимальная дата для DateOfBirthDateTimePicker.
+        /// </summary>
+        private readonly DateTime MinDate = new DateTime(1900, 01, 01);
+
+        /// <summary>
+        /// Максимальная дата для DateOfBirthDateTimePicker.
+        /// </summary>
+        private readonly DateTime MaxDate = DateTime.Now;
 
         /// <summary>
         /// Словарь ошибок полей.
@@ -26,8 +36,11 @@
         /// </summary>
         private Dictionary<string, string> dictionaryErrors = new Dictionary<string, string>()
         {
-            { "fullNameError", "" }, { "eMailError", "" }, { "phoneNumberError", "" },
-            { "dateOfBirthError", "" }, { "idVKError", "" }
+            { nameof(FullNameTextBox), "" }, 
+            { nameof(EmailTextBox), "" }, 
+            { nameof(PhoneNumberTextBox), "" },
+            { nameof(DateOfBirthDateTimePicker), "" }, 
+            { nameof(VKTextBox), "" }
         };
 
         /// <summary>
@@ -57,22 +70,9 @@
         public ContactForm()
         {
             InitializeComponent();
-            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 01, 01);
-            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
+            DateOfBirthDateTimePicker.MinDate = MinDate;
+            DateOfBirthDateTimePicker.MaxDate = MaxDate;
             Contact = new Contact();
-        }
-
-        /// <summary>
-        /// Конструтор ContactForm c параметром.
-        /// </summary>
-        /// <param name="contact">Экземпляр класса Contact.</param>
-        public ContactForm(Contact contact)
-        {
-            InitializeComponent();
-            DateOfBirthDateTimePicker.MinDate = new DateTime(1900, 01, 01);
-            DateOfBirthDateTimePicker.MaxDate = DateTime.Today;
-            Contact = contact;
-            UpdateForm();
         }
 
         /// <summary>
@@ -105,26 +105,17 @@
         /// <returns>true - нет ошибок. false - есть ошибки.</returns>
         private bool CheckFormOnErrors()
         {
-            var errors = new List<string>();
-            foreach (var error in dictionaryErrors)
-            {
-                errors.Add(error.Value);
-            }
-            errors = errors.Where(error => error != "").ToList();
+            var errors = dictionaryErrors.Values.Where(error => error != "").ToList();
+
+            if (errors.Count == 0) return true;
 
             string fullErrorsMessage = "";
             fullErrorsMessage = " - " + string.Join("\n - ", errors);
 
-            if (fullErrorsMessage.Length > 3) //Длина > 3, потому что в fullErrorsMessage всегда есть " - ", это три символа.
-            {
-                MessageBox.Show(fullErrorsMessage, "Errors",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            
+            MessageBox.Show(fullErrorsMessage, "Errors",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -144,89 +135,87 @@
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            dictionaryErrors["fullNameError"] = "";
-            FullNameTextBox.BackColor = correctСolor;
+            dictionaryErrors[nameof(FullNameTextBox)] = "";
+            FullNameTextBox.BackColor = _correctСolor;
             try
             {
                 _contact.FullName = FullNameTextBox.Text;
             }
             catch (ArgumentException exception)
             {
-                FullNameTextBox.BackColor = errorColor;
-                dictionaryErrors["fullNameError"] = exception.Message;
+                FullNameTextBox.BackColor = _errorColor;
+                dictionaryErrors[nameof(FullNameTextBox)] = exception.Message;
             }
         }
 
         private void EmailTextBox_TextChanged(object sender, EventArgs e)
         {
-            EmailTextBox.BackColor = correctСolor;
-            dictionaryErrors["eMailError"] = "";
+            EmailTextBox.BackColor = _correctСolor;
+            dictionaryErrors[nameof(EmailTextBox)] = "";
             try
             {
                 _contact.EMail = EmailTextBox.Text;
             }
             catch (ArgumentException exception)
             {
-                EmailTextBox.BackColor = errorColor;
-                dictionaryErrors["eMailError"] = exception.Message;
+                EmailTextBox.BackColor = _errorColor;
+                dictionaryErrors[nameof(EmailTextBox)] = exception.Message;
             }
         }
 
         private void PhoneNumberTextBox_TextChanged(object sender, EventArgs e)
         {
-            PhoneNumberTextBox.BackColor = correctСolor;
-            dictionaryErrors["phoneNumberError"] = "";
+            PhoneNumberTextBox.BackColor = _correctСolor;
+            dictionaryErrors[nameof(PhoneNumberTextBox)] = "";
             try
             {
                 _contact.PhoneNumber = PhoneNumberTextBox.Text;
             }
             catch (ArgumentException exception)
             {
-                PhoneNumberTextBox.BackColor = errorColor;
-                dictionaryErrors["phoneNumberError"] = exception.Message;
+                PhoneNumberTextBox.BackColor = _errorColor;
+                dictionaryErrors[nameof(PhoneNumberTextBox)] = exception.Message;
             }
         }
 
         private void DateOfBirthDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            DateOfBirthDateTimePicker.BackColor = correctСolor;
-            dictionaryErrors["dateOfBirthError"] = "";
+            DateOfBirthDateTimePicker.BackColor = _correctСolor;
+            dictionaryErrors[nameof(DateOfBirthDateTimePicker)] = "";
             try
             {
                 _contact.DateOfBirth = DateOfBirthDateTimePicker.Value;
             }
             catch (ArgumentException exception)
             {
-                DateOfBirthDateTimePicker.BackColor = errorColor;
-                dictionaryErrors["dateOfBirthError"] = exception.Message;
+                DateOfBirthDateTimePicker.BackColor = _errorColor;
+                dictionaryErrors[nameof(DateOfBirthDateTimePicker)] = exception.Message;
             }
         }
 
         private void VKTextBox_TextChanged(object sender, EventArgs e)
         {
-            VKTextBox.BackColor = correctСolor;
-            dictionaryErrors["idVKError"] = "";
+            VKTextBox.BackColor = _correctСolor;
+            dictionaryErrors[nameof(VKTextBox)] = "";
             try
             {
                 _contact.IdVK = VKTextBox.Text;
             }
             catch (ArgumentException exception)
             {
-                VKTextBox.BackColor = errorColor;
-                dictionaryErrors["idVKError"] = exception.Message;
+                VKTextBox.BackColor = _errorColor;
+                dictionaryErrors[nameof(VKTextBox)] = exception.Message;
             }
         }
 
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32;
-            AddPhotoButton.BackColor = Color.White;
         }
 
         private void AddPhotoButton_MouseLeave(object sender, EventArgs e)
         {
             AddPhotoButton.Image = Properties.Resources.add_photo_32x32_gray;
-            AddPhotoButton.BackColor = Color.White;
         }
     }
 }
