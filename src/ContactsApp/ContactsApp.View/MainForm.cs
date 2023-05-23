@@ -4,7 +4,6 @@
     using System;
     using System.Collections.Generic;
     using System.Drawing;
-    using System.Reflection;
     using System.Windows.Forms;
 
     public partial class MainForm : Form
@@ -14,10 +13,15 @@
         /// </summary>
         private Project _project = new Project();
 
+        /// <summary>
+        /// Список отображаемых контактов.
+        /// </summary>
+        private List<Contact> _currentContacts;
+
         public MainForm()
         {
             InitializeComponent();
-            UpdateListBox();
+            UpdateCurrentProject();
         }
 
         /// <summary>
@@ -26,7 +30,7 @@
         private void UpdateListBox() 
         {
             ContactsListBox.Items.Clear();
-            foreach (var item in _project.Contacts)
+            foreach (var item in _currentContacts)
             {
                 ContactsListBox.Items.Add(item.FullName);
             }
@@ -53,7 +57,7 @@
             }
 
             ContactForm contactForm = new ContactForm();
-            contactForm.Contact = _project.Contacts[index];
+            contactForm.Contact = (Contact)_project.Contacts[index].Clone();
 
             if (contactForm.ShowDialog() == DialogResult.OK)
             {
@@ -91,16 +95,24 @@
         /// <param name="index">Индекс выбранного контакта в ContactsListBox.</param>
         private void UpdateSelectedContact(int index)
         {
-            if (index == -1)
-            {
-                return;
-            }
-            var contact = _project.Contacts[index];
+            var contact = _currentContacts[index];
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.EMail;
             PhoneNumberTextBox.Text = contact.PhoneNumber;
             DateOfBirthTextBox.Text = System.Convert.ToString(contact.DateOfBirth);
             VKTextBox.Text = contact.IdVK;
+        }
+
+        private void UpdateCurrentProject()
+        {
+            if (FindTextBox.Text == "")
+            {
+                _currentContacts = _project.Contacts;
+            }
+            else
+            {
+                _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);
+            }
         }
 
         /// <summary>
@@ -118,20 +130,45 @@
         private void AddContactbutton_Click(object sender, EventArgs e)
         {
             AddContact();
+            _project.SortContacts(_project.Contacts);
+            UpdateCurrentProject();
             UpdateListBox();
         }
 
         private void EditContactbutton_Click(object sender, EventArgs e)
         {
-            var index = ContactsListBox.SelectedIndex;
-            EditContact(index);
-            UpdateListBox();
-            UpdateSelectedContact(index);
+            if (ContactsListBox.SelectedIndex != -1)
+            {
+                var index = _project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]);
+                EditContact(index);
+                _project.SortContacts(_project.Contacts);
+                UpdateCurrentProject();
+                UpdateListBox();
+                if (_currentContacts.Count == 0)
+                {
+                    FindTextBox.Text = "";
+                    UpdateCurrentProject();
+                    UpdateListBox();
+                    UpdateSelectedContact(index);
+                    ContactsListBox.SelectedIndex = index;
+                }
+                else
+                {
+                    UpdateSelectedContact(0);
+                }
+            }
         }
 
         private void RemoveContactbutton_Click(object sender, EventArgs e)
         {
-            RemoveContact(ContactsListBox.SelectedIndex);
+            RemoveContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
+            _project.SortContacts(_project.Contacts);
+            UpdateCurrentProject();
+            UpdateListBox();
+        }
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateCurrentProject();
             UpdateListBox();
         }
 

@@ -59,8 +59,11 @@
             }
             set 
             { 
-                _contact = value; 
-                UpdateForm();
+                _contact = value;
+                if (value != null)
+                {
+                    UpdateForm();
+                } 
             }
         }
 

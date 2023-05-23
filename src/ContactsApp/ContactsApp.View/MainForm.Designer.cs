@@ -170,6 +170,7 @@
             this.FindTextBox.Name = "FindTextBox";
             this.FindTextBox.Size = new System.Drawing.Size(186, 20);
             this.FindTextBox.TabIndex = 1;
+            this.FindTextBox.TextChanged += new System.EventHandler(this.FindTextBox_TextChanged);
             // 
             // ContactsListBox
             // 
@@ -178,17 +179,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ContactsListBox.FormattingEnabled = true;
             this.ContactsListBox.IntegralHeight = false;
-            this.ContactsListBox.Items.AddRange(new object[] {
-            "Воробьева Милана",
-            "Ильин Марк",
-            "Семенова Ульяна",
-            "Левина Алиса",
-            "Беляева Виктория",
-            "Смирнова Малика",
-            "Федоров Виктор",
-            "Шульгина София",
-            "Новикова Алия",
-            "Власов Тимофей"});
             this.ContactsListBox.Location = new System.Drawing.Point(3, 29);
             this.ContactsListBox.Name = "ContactsListBox";
             this.ContactsListBox.Size = new System.Drawing.Size(238, 376);

@@ -49,10 +49,10 @@ namespace ContactsApp.Model
         /// <param name="contacts">Список всех контактов.</param>
         /// <param name="substring">Подстрока поиска.</param>
         /// <returns></returns>
-        public List<Contact> FindContactsBySubstring(List<Contact> contacts, string substring)
+        public List<Contact> FindContactsBySubstring(string substring)
         {
             substring = substring.ToLower();
-            return contacts.FindAll(contact => contact.FullName.ToLower().Contains(substring));
+            return Contacts.FindAll(contact => contact.FullName.ToLower().Contains(substring));
         }
     }
 }
