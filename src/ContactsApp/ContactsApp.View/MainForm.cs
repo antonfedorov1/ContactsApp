@@ -18,10 +18,18 @@
         /// </summary>
         private List<Contact> _currentContacts;
 
+        /// <summary>
+        /// Сериализатор и дисериализатор.
+        /// </summary>
+        ProjectManager _projectManager;
+
         public MainForm()
         {
             InitializeComponent();
+            _projectManager = new ProjectManager();
+            _project = _projectManager.LoadFromFile();
             UpdateCurrentProject();
+            UpdateListBox();
         }
 
         /// <summary>
@@ -133,6 +141,7 @@
             _project.SortContacts(_project.Contacts);
             UpdateCurrentProject();
             UpdateListBox();
+            _projectManager.SaveToFile(_project);
         }
 
         private void EditContactbutton_Click(object sender, EventArgs e)
@@ -156,15 +165,24 @@
                 {
                     UpdateSelectedContact(0);
                 }
+                _projectManager.SaveToFile(_project);
             }
         }
 
         private void RemoveContactbutton_Click(object sender, EventArgs e)
         {
             RemoveContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
-            _project.SortContacts(_project.Contacts);
             UpdateCurrentProject();
             UpdateListBox();
+            if (ContactsListBox.Items.Count != 0)
+            {
+                UpdateSelectedContact(0);
+            }
+            else
+            {
+                ClearSelectedContact();
+            }
+            _projectManager.SaveToFile(_project);
         }
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -186,6 +204,7 @@
         }
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _projectManager.SaveToFile(_project);
             var isFormClosing = MessageBox.Show("Do you really want to leave?", "Exiting the program",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
