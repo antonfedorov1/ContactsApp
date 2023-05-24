@@ -60,11 +60,7 @@
                 Project project;
                 string json = File.ReadAllText(Patch + FileName);
                 project = JsonConvert.DeserializeObject<Project>(json);
-                if (project == null)
-                {
-                    return new Project();
-                }
-                return project;
+                return project ?? new Project();
             }
             catch (Exception)
             {
