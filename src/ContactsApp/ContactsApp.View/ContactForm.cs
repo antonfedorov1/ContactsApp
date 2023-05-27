@@ -12,12 +12,12 @@
         /// <summary>
         /// Цвет, если всё правильно.
         /// </summary>
-        private Color _correctСolor = Color.White;
+        private readonly Color _correctСolor = Color.White;
 
         /// <summary>
         /// Цвет, если есть ошибка.
         /// </summary>
-        private Color _errorColor = Color.LightPink;
+        private readonly Color _errorColor = Color.LightPink;
 
         /// <summary>
         /// Минимальная дата для DateOfBirthDateTimePicker.

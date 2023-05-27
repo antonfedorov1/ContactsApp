@@ -48,7 +48,7 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="contacts">Список всех контактов.</param>
         /// <param name="substring">Подстрока поиска.</param>
-        /// <returns></returns>
+        /// <returns>Список контактов содержащих подстроку.</returns>
         public List<Contact> FindContactsBySubstring(string substring)
         {
             substring = substring.ToLower();

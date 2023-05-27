@@ -1,13 +1,12 @@
-namespace ContactsApp.UnitTests
+namespace ContactsApp.Model.UnitTests
 {
     using NUnit.Framework;
     using ContactsApp.Model;
 
-
     [TestFixture]
     public class ContactTests
     {
-        [Test(Description = "ѕроверка на негативное присваивание в поле FullName.")]
+        [Test(Description = "Check for negative assignment in the FullName field.")]
         public void FullName_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -26,7 +25,7 @@ namespace ContactsApp.UnitTests
             "The length of the Full Name field must not be more than 100 characters.");
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в поле FullName.")]
+        [Test(Description = "Check for a positive assignment in the FullName field.")]
         public void FullName_SetCorrectValue_ArgumentException()
         {
             // Arrange
@@ -42,7 +41,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "ѕроверка на негативное присваивание в поле E-mail.")]
+        [Test(Description = "Check for negative assignment in the E-mail field.")]
         public void EMail_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -62,7 +61,7 @@ namespace ContactsApp.UnitTests
             "The length of the E-mail field must not be greater than 100 characters.");
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в поле E-mail.")]
+        [Test(Description = "Check for positive assignment in the E-mail field.")]
         public void EMail_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -78,7 +77,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "ѕроверка на негативное присваивание в поле PhoneNumber.")]
+        [Test(Description = "Check for negative assignment in the Phone Number field.")]
         public void PhoneNumber_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -95,7 +94,7 @@ namespace ContactsApp.UnitTests
             " Number format: +7 (000) 000-00-00.");
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в поле PhoneNumber.")]
+        [Test(Description = "Check for a positive assignment in the Phone Number field.")]
         public void PhoneNumber_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -111,13 +110,13 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "ѕроверка на негативное присваивание в поле DateOfBirth.")]
-        [TestCase("1700-05-24T00:00:00+07:00", "ƒолжно возникать исключение, " +
-            "если дата рождени€ меньше 1900, 1, 1", 
-            TestName = "ѕрисвоение 1700 года в качестве даты рождени€")]
-        [TestCase("2100-05-24T00:00:00+07:00", "ƒолжно возникать исключение, " +
-            "если дата рождени€ больше текущей даты",
-            TestName = "ѕрисвоение 2100 года в качестве даты рождени€")]
+        [Test(Description = "Checking for a negative assignment in the DateOfBirth field.")]
+        [TestCase("1700-05-24T00:00:00+07:00", "Should throw an exception, " +
+            "if the date of birth is less than 1900, 1, 1", 
+            TestName = "Assigning 1700 as the date of birth")]
+        [TestCase("2100-05-24T00:00:00+07:00", "An exception should be thrown, " +
+            "if the date of birth is greater than the current date",
+            TestName = "Assigning 2100 as a date of birth")]
         public void DateOfBirth_SetIncorrectValue_ArgumentException
             (string wrongDateOfBirth, string message)
         {
@@ -133,7 +132,7 @@ namespace ContactsApp.UnitTests
             message);
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в поле DateOfBirth.")]
+        [Test(Description = "Check for a positive assignment in the DateOfBirth field.")]
         public void DateOfBirth_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -149,7 +148,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "ѕроверка на негативное присваивание в поле IdVK.")]
+        [Test(Description = "Check for negative assignment in the IdVK field.")]
         public void IdVK_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -168,7 +167,7 @@ namespace ContactsApp.UnitTests
             "The length of the VK field should not be more than 50 characters.");
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в поле IdVK.")]
+        [Test(Description = "Check for positive assignment in the IdVK field.")]
         public void IdVK_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -184,7 +183,7 @@ namespace ContactsApp.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "ѕроверка на негативное присваивание в конструктор Contact.")]
+        [Test(Description = "Checking for negative assignment to the Contact constructor.")]
         public void Contact_PassingInvalidParameter_ArgumentException()
         {
             // Arrange
@@ -199,10 +198,10 @@ namespace ContactsApp.UnitTests
                 // Act
                 new Contact(wrongFullName, "gmail", "+7000000", new DateTime(2006, 1, 1), "4324");
             },
-            "ѕрисвоение негативного значени€ в конструктор Contact.");
+            "Assigning a negative value to the Contact constructor.");
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в в конструктор Contact.")]
+        [Test(Description = "Checking for a positive assignment in the Contact constructor.")]
         public void Contact_PassingCorrectParameter_Assignation()
         {
             // Arrange
@@ -232,14 +231,19 @@ namespace ContactsApp.UnitTests
             var actualContact = contact;
 
             // Assert
-            Assert.AreEqual(expectedFullName, actualContact.FullName);
-            Assert.AreEqual(expectedEMail, actualContact.EMail);
-            Assert.AreEqual(expectedPhoneNumber, actualContact.PhoneNumber);
-            Assert.AreEqual(expectedDateOfBirth, actualContact.DateOfBirth);
-            Assert.AreEqual(expextedIdVK, actualContact.IdVK);
+            Assert.Multiple(
+                () =>
+                {
+                    Assert.AreEqual(expectedFullName, actualContact.FullName);
+                    Assert.AreEqual(expectedEMail, actualContact.EMail);
+                    Assert.AreEqual(expectedPhoneNumber, actualContact.PhoneNumber);
+                    Assert.AreEqual(expectedDateOfBirth, actualContact.DateOfBirth);
+                    Assert.AreEqual(expextedIdVK, actualContact.IdVK);
+                }
+                );
         }
 
-        [Test(Description = "ѕроверка на позитивное присваивание в в конструктор Contact.")]
+        [Test(Description = "Checking for a positive assignment in the Contact constructor.")]
         public void Clone_PassingCorrectParameter_Assignation()
         {
             // Arrange
@@ -257,11 +261,16 @@ namespace ContactsApp.UnitTests
             var actualContact = contactClone;
 
             // Assert
-            Assert.AreEqual(expectedContact.FullName, actualContact.FullName);
-            Assert.AreEqual(expectedContact.EMail, actualContact.EMail);
-            Assert.AreEqual(expectedContact.PhoneNumber, actualContact.PhoneNumber);
-            Assert.AreEqual(expectedContact.DateOfBirth, actualContact.DateOfBirth);
-            Assert.AreEqual(expectedContact.IdVK, actualContact.IdVK);
+            Assert.Multiple(
+                () =>
+                {
+                    Assert.AreEqual(expectedContact.FullName, actualContact.FullName);
+                    Assert.AreEqual(expectedContact.EMail, actualContact.EMail);
+                    Assert.AreEqual(expectedContact.PhoneNumber, actualContact.PhoneNumber);
+                    Assert.AreEqual(expectedContact.DateOfBirth, actualContact.DateOfBirth);
+                    Assert.AreEqual(expectedContact.IdVK, actualContact.IdVK);
+                }
+                );
         }
     }
 }
