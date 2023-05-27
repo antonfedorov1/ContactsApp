@@ -6,7 +6,7 @@ namespace ContactsApp.Model.UnitTests
     [TestFixture]
     public class ContactTests
     {
-        [Test(Description = "Check for negative assignment in the FullName field.")]
+        [Test(Description = "Check for an incorrect value in the FullName field.")]
         public void FullName_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -25,7 +25,7 @@ namespace ContactsApp.Model.UnitTests
             "The length of the Full Name field must not be more than 100 characters.");
         }
 
-        [Test(Description = "Check for a positive assignment in the FullName field.")]
+        [Test(Description = "Check the correct value in the FullName field.")]
         public void FullName_SetCorrectValue_ArgumentException()
         {
             // Arrange
@@ -41,7 +41,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "Check for negative assignment in the E-mail field.")]
+        [Test(Description = "Check for an incorrect value in the Email field.")]
         public void EMail_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -61,7 +61,7 @@ namespace ContactsApp.Model.UnitTests
             "The length of the E-mail field must not be greater than 100 characters.");
         }
 
-        [Test(Description = "Check for positive assignment in the E-mail field.")]
+        [Test(Description = "Check the correct value in the E-mail field.")]
         public void EMail_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -77,7 +77,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "Check for negative assignment in the Phone Number field.")]
+        [Test(Description = "Check for incorrect values in the Phone Number field.")]
         public void PhoneNumber_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -94,7 +94,7 @@ namespace ContactsApp.Model.UnitTests
             " Number format: +7 (000) 000-00-00.");
         }
 
-        [Test(Description = "Check for a positive assignment in the Phone Number field.")]
+        [Test(Description = "Check the correct value in the Phone number field.")]
         public void PhoneNumber_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -110,7 +110,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "Checking for a negative assignment in the DateOfBirth field.")]
+        [Test(Description = "Checking for an invalid assignment in the Date Of Birth field.")]
         [TestCase("1700-05-24T00:00:00+07:00", "Should throw an exception, " +
             "if the date of birth is less than 1900, 1, 1", 
             TestName = "Assigning 1700 as the date of birth")]
@@ -132,7 +132,7 @@ namespace ContactsApp.Model.UnitTests
             message);
         }
 
-        [Test(Description = "Check for a positive assignment in the DateOfBirth field.")]
+        [Test(Description = "Check the correct value in the DateOfBirth field.")]
         public void DateOfBirth_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -148,7 +148,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "Check for negative assignment in the IdVK field.")]
+        [Test(Description = "Check the wrong value in the IdVK field.")]
         public void IdVK_SetIncorrectValue_ArgumentException()
         {
             // Arrange
@@ -167,7 +167,7 @@ namespace ContactsApp.Model.UnitTests
             "The length of the VK field should not be more than 50 characters.");
         }
 
-        [Test(Description = "Check for positive assignment in the IdVK field.")]
+        [Test(Description = "Check the correct value in the IdVK field.")]
         public void IdVK_SetCorrectValue_Assignation()
         {
             // Arrange
@@ -183,7 +183,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.AreEqual(expexted, actual);
         }
 
-        [Test(Description = "Checking for negative assignment to the Contact constructor.")]
+        [Test(Description = "Checking for an invalid assignment to the Contact constructor.")]
         public void Contact_PassingInvalidParameter_ArgumentException()
         {
             // Arrange
@@ -201,7 +201,7 @@ namespace ContactsApp.Model.UnitTests
             "Assigning a negative value to the Contact constructor.");
         }
 
-        [Test(Description = "Checking for a positive assignment in the Contact constructor.")]
+        [Test(Description = "Checking for correct values in the contact constructor.")]
         public void Contact_PassingCorrectParameter_Assignation()
         {
             // Arrange
@@ -243,7 +243,7 @@ namespace ContactsApp.Model.UnitTests
                 );
         }
 
-        [Test(Description = "Checking for a positive assignment in the Contact constructor.")]
+        [Test(Description = "Checking for the correct value in the cloned contact.")]
         public void Clone_PassingCorrectParameter_Assignation()
         {
             // Arrange
