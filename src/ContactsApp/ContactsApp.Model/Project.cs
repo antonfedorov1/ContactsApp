@@ -46,13 +46,16 @@ namespace ContactsApp.Model
         /// <summary>
         /// Поиск контакта по подстроке.
         /// </summary>
-        /// <param name="contacts">Список всех контактов.</param>
         /// <param name="substring">Подстрока поиска.</param>
         /// <returns>Список контактов содержащих подстроку.</returns>
-        public List<Contact> FindContactsBySubstring(string substring)
+        public List<Contact> FindContactsBySubstring(List<Contact> contacts, string substring)
         {
+            if (substring == "")
+            {
+                return contacts;
+            }
             substring = substring.ToLower();
-            return Contacts.FindAll(contact => contact.FullName.ToLower().Contains(substring));
+            return contacts.FindAll(contact => contact.FullName.ToLower().Contains(substring));
         }
     }
 }

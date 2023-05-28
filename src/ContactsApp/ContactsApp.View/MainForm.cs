@@ -113,14 +113,7 @@
 
         private void UpdateCurrentProject()
         {
-            if (FindTextBox.Text == "")
-            {
-                _currentContacts = _project.Contacts;
-            }
-            else
-            {
-                _currentContacts = _project.FindContactsBySubstring(FindTextBox.Text);
-            }
+            _currentContacts = _project.FindContactsBySubstring(_project.Contacts, FindTextBox.Text);
         }
 
         /// <summary>

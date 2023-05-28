@@ -7,7 +7,7 @@ namespace ContactsApp.Model.UnitTests
     public class ContactTests
     {
         [Test(Description = "Check for an incorrect value in the FullName field.")]
-        public void FullName_SetIncorrectValue_ArgumentException()
+        public void FullName_SetIncorrectValue_ThrowsException()
         {
             // Arrange
             var wrongFullName = 
@@ -26,11 +26,11 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Check the correct value in the FullName field.")]
-        public void FullName_SetCorrectValue_ArgumentException()
+        public void FullName_SetCorrectValue_ReturnsSameValue()
         {
             // Arrange
             var correctFullName = "Fedorov Anton";
-            var expexted = correctFullName;
+            var expected = correctFullName;
             var contact = new Contact();
 
             // Act
@@ -38,11 +38,11 @@ namespace ContactsApp.Model.UnitTests
             var actual = contact.FullName;
 
             // Assert
-            Assert.AreEqual(expexted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test(Description = "Check for an incorrect value in the Email field.")]
-        public void EMail_SetIncorrectValue_ArgumentException()
+        public void EMail_SetIncorrectValue_ThrowsException()
         {
             // Arrange
             var wrongEMail =
@@ -62,23 +62,23 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Check the correct value in the E-mail field.")]
-        public void EMail_SetCorrectValue_Assignation()
+        public void EMail_SetCorrectValue_ReturnsSameValue()
         {
             // Arrange
-            var correctEMaile = "anton_fedorov#gmail.com";
-            var expexted = correctEMaile;
+            var correctEMail = "anton_fedorov#gmail.com";
+            var expected = correctEMail;
             var contact = new Contact();
 
             // Act
-            contact.EMail = correctEMaile;
+            contact.EMail = correctEMail;
             var actual = contact.EMail;
 
             // Assert
-            Assert.AreEqual(expexted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test(Description = "Check for incorrect values in the Phone Number field.")]
-        public void PhoneNumber_SetIncorrectValue_ArgumentException()
+        public void PhoneNumber_SetIncorrectValue_ThrowsException()
         {
             // Arrange
             var wrongPhoneNumber = "+1-2+43325";
@@ -95,11 +95,11 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Check the correct value in the Phone number field.")]
-        public void PhoneNumber_SetCorrectValue_Assignation()
+        public void PhoneNumber_SetCorrectValue_ReturnsSameValue()
         {
             // Arrange
             var correctPhoneNumber = "+7 (000) 000-00-00";
-            var expexted = correctPhoneNumber;
+            var expected = correctPhoneNumber;
             var contact = new Contact();
 
             // Act
@@ -107,7 +107,7 @@ namespace ContactsApp.Model.UnitTests
             var actual = contact.PhoneNumber;
 
             // Assert
-            Assert.AreEqual(expexted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test(Description = "Checking for an invalid assignment in the Date Of Birth field.")]
@@ -117,7 +117,7 @@ namespace ContactsApp.Model.UnitTests
         [TestCase("2100-05-24T00:00:00+07:00", "An exception should be thrown, " +
             "if the date of birth is greater than the current date",
             TestName = "Assigning 2100 as a date of birth")]
-        public void DateOfBirth_SetIncorrectValue_ArgumentException
+        public void DateOfBirth_SetIncorrectValue_ThrowsException
             (string wrongDateOfBirth, string message)
         {
             // Arrange
@@ -133,11 +133,11 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Check the correct value in the DateOfBirth field.")]
-        public void DateOfBirth_SetCorrectValue_Assignation()
+        public void DateOfBirth_SetCorrectValue_ReturnsSameValue()
         {
             // Arrange
             var correctDateOfBirth = DateTime.Today;
-            var expexted = correctDateOfBirth;
+            var expected = correctDateOfBirth;
             var contact = new Contact();
 
             // Act
@@ -145,11 +145,11 @@ namespace ContactsApp.Model.UnitTests
             var actual = contact.DateOfBirth;
 
             // Assert
-            Assert.AreEqual(expexted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test(Description = "Check the wrong value in the IdVK field.")]
-        public void IdVK_SetIncorrectValue_ArgumentException()
+        public void IdVK_SetIncorrectValue_ThrowsException()
         {
             // Arrange
             var wrongIdVK = 
@@ -168,11 +168,11 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Check the correct value in the IdVK field.")]
-        public void IdVK_SetCorrectValue_Assignation()
+        public void IdVK_SetCorrectValue_ReturnsSameValue()
         {
             // Arrange
             var correctIdVK = "325432";
-            var expexted = correctIdVK;
+            var expected = correctIdVK;
             var contact = new Contact();
 
             // Act
@@ -180,11 +180,11 @@ namespace ContactsApp.Model.UnitTests
             var actual = contact.IdVK;
 
             // Assert
-            Assert.AreEqual(expexted, actual);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test(Description = "Checking for an invalid assignment to the Contact constructor.")]
-        public void Contact_PassingInvalidParameter_ArgumentException()
+        public void Contact_PassingInvalidParameter_ThrowsException()
         {
             // Arrange
             var wrongFullName =
@@ -202,7 +202,7 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Checking for correct values in the contact constructor.")]
-        public void Contact_PassingCorrectParameter_Assignation()
+        public void Contact_PassingCorrectParameter_ReturnsSameValue()
         {
             // Arrange
             var correctFullName = "Anton Fedorov";
@@ -244,7 +244,7 @@ namespace ContactsApp.Model.UnitTests
         }
 
         [Test(Description = "Checking for the correct value in the cloned contact.")]
-        public void Clone_PassingCorrectParameter_Assignation()
+        public void Clone_PassingCorrectParameter_ReturnsSameValue()
         {
             // Arrange
             var correctContact = new Contact(
