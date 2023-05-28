@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace ContactsApp.Model
 {
@@ -20,8 +21,7 @@ namespace ContactsApp.Model
         /// <returns>Отсортированный список контактов.</returns>
         public List<Contact> SortContacts(List<Contact> contacts)
         {
-            contacts.Sort((c1, c2) => c1.FullName.CompareTo(c2.FullName));
-            return contacts;
+            return contacts.OrderBy(contact => contact.FullName).ToList();
         }
 
         /// <summary>
@@ -29,13 +29,13 @@ namespace ContactsApp.Model
         /// </summary>
         /// <param name="contacts">Список всех контактов.</param>
         /// <returns>Список всех именинников.</returns>
-        public List<Contact> FindBirthdays(List<Contact> contacts)
+        public List<Contact> FindBirthdays(List<Contact> contacts, DateTime date)
         {
             List<Contact> birthDayContacts = new List<Contact>();
             foreach (var contact in contacts)
             {
-                if (contact.DateOfBirth.Day == DateTime.Today.Day &&
-                    contact.DateOfBirth.Month == DateTime.Today.Month)
+                if (contact.DateOfBirth.Day == date.Day &&
+                    contact.DateOfBirth.Month == date.Month)
                 {
                     birthDayContacts.Add(contact);
                 }
@@ -46,6 +46,7 @@ namespace ContactsApp.Model
         /// <summary>
         /// Поиск контакта по подстроке.
         /// </summary>
+        /// <param name="contacts">Список всех контактов.</param>
         /// <param name="substring">Подстрока поиска.</param>
         /// <returns>Список контактов содержащих подстроку.</returns>
         public List<Contact> FindContactsBySubstring(List<Contact> contacts, string substring)

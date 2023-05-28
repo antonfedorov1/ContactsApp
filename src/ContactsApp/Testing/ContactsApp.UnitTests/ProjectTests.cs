@@ -25,7 +25,7 @@ namespace ContactsApp.Model.UnitTests
                     "Kirill Ivanov",
                     "kirill_ivanov@mail.ru",
                     "+7 (000) 800-43-04",
-                    DateTime.Today,
+                    new DateTime(1979, 05, 12),
                     "325432");
                 var thirdContact = new Contact(
                     "Gleb Petrov",
@@ -40,8 +40,28 @@ namespace ContactsApp.Model.UnitTests
                     thirdContact
                 };
                 return contacts;
+            }   
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="expected"></param>
+        /// <param name="actual"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void AssertList(List<Contact> expected, List<Contact> actual)
+        {
+            if (expected.Count == actual.Count)
+            {
+                for (int i = 0; i < expected.Count; i++)
+                {
+                    Assert.AreEqual(expected[i].FullName, actual[i].FullName);
+                }
             }
-            
+            else
+            {
+                throw new ArgumentException("Returned a different number of contacts.");
+            }
         }
 
         [Test(Description = "Check for correct sorting of contact lists.")]
@@ -60,7 +80,7 @@ namespace ContactsApp.Model.UnitTests
             var actual = sortContacts;
 
             // Assert
-            CollectionAssert.AreEqual(expected, actual);
+            AssertList(expected, actual);   
         }
 
         [Test(Description = "Check for the correct search for birthdays.")]
@@ -72,11 +92,11 @@ namespace ContactsApp.Model.UnitTests
             var expected = new List<Contact> { contacts[1] };
 
             // Act
-            var birthdayList = project.FindBirthdays(contacts);
+            var birthdayList = project.FindBirthdays(contacts, new DateTime(1979, 05, 12));
             var actual = birthdayList;
 
             // Assert
-            CollectionAssert.AreEqual(expected, actual);
+            AssertList(expected, actual);
         }
 
         [Test(Description = "Check for correct substring search.")]
@@ -84,11 +104,9 @@ namespace ContactsApp.Model.UnitTests
         {
             // Arrange
             var contacts = ContactsForTests;
-            var expected = contacts;
+            var expected = ContactsForTests;
             expected.RemoveAt(1);
             var project = new Project();
-            project.Contacts.Add(expected[0]);
-            project.Contacts.Add(expected[1]);
             var substring = "rov";
 
             // Act
@@ -96,7 +114,7 @@ namespace ContactsApp.Model.UnitTests
             var actual = listContainingSubstring;
 
             // Assert
-            CollectionAssert.AreEqual(expected, actual);
+            AssertList(expected, actual);
         }
     }
 }

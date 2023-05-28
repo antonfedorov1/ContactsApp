@@ -22,18 +22,27 @@
         /// <summary>
         /// Путь к файлу.
         /// </summary>
-        private static string _patch = $@"{_appData}\FedorovAnton\ContactApp\";
+        private static string _path = $@"{_appData}\FedorovAnton\ContactApp\";
 
 
         /// <summary>
         /// Возвращает путь к файлу.
         /// </summary>
-        public string Patch { get { return _patch; } }
+        public string Path 
+        { 
+            get { return _path; }
+            set { _path = value; }
+        
+        }
 
         /// <summary>
         /// Возвращает имя файла.
         /// </summary>
-        public string FileName { get { return _fileName; } }
+        public string FileName 
+        { 
+            get { return _fileName; }
+            set { _fileName = value; }
+        }
 
         /// <summary>
         /// Запись контактов в файл.
@@ -41,12 +50,12 @@
         /// <param name="project">Список контактов.</param>
         public void SaveToFile(Project project)
         {
-            if (!Directory.Exists(Patch))
+            if (!Directory.Exists(Path))
             {
-                Directory.CreateDirectory(Patch);
+                Directory.CreateDirectory(Path);
             }
             string json = JsonConvert.SerializeObject(project, Formatting.Indented);
-            File.WriteAllText(Patch + FileName, json);
+            File.WriteAllText(Path + FileName, json);
         }
 
         /// <summary>
@@ -58,7 +67,7 @@
             try
             {
                 Project project;
-                string json = File.ReadAllText(Patch + FileName);
+                string json = File.ReadAllText(Path + FileName);
                 project = JsonConvert.DeserializeObject<Project>(json);
                 return project ?? new Project();
             }
