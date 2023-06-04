@@ -3,6 +3,7 @@ namespace ContactsApp.Model.UnitTests
     using NUnit.Framework;
     using ContactsApp.Model;
     using System.Collections.Generic;
+    using System;
 
     [TestFixture]
     public class ProjectTests

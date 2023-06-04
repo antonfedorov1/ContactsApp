@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33103.184
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.View", "ContactsApp.View\ContactsApp.View.csproj", "{C540CB49-A449-4DB2-A4D0-59AB5335442A}"
 EndProject
@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{4319
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.Model", "ContactsApp.Model\ContactsApp.Model.csproj", "{596E4443-499C-4D98-BCF2-49DD9E0CBD88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.UnitTests", "Testing\ContactsApp.UnitTests\ContactsApp.UnitTests.csproj", "{EA01FC19-9884-4194-8788-5F4B598259B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactsApp.Model.UnitTests", "Testing\ContactsApp.UnitTests\ContactsApp.Model.UnitTests.csproj", "{BCBF3224-8E8C-4AA4-9847-256C03E85748}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +25,16 @@ Global
 		{596E4443-499C-4D98-BCF2-49DD9E0CBD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{596E4443-499C-4D98-BCF2-49DD9E0CBD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{596E4443-499C-4D98-BCF2-49DD9E0CBD88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA01FC19-9884-4194-8788-5F4B598259B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA01FC19-9884-4194-8788-5F4B598259B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA01FC19-9884-4194-8788-5F4B598259B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA01FC19-9884-4194-8788-5F4B598259B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBF3224-8E8C-4AA4-9847-256C03E85748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBF3224-8E8C-4AA4-9847-256C03E85748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBF3224-8E8C-4AA4-9847-256C03E85748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBF3224-8E8C-4AA4-9847-256C03E85748}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EA01FC19-9884-4194-8788-5F4B598259B6} = {43197FC8-FFA5-4145-AD6D-EC5E9191BEEF}
+		{BCBF3224-8E8C-4AA4-9847-256C03E85748} = {43197FC8-FFA5-4145-AD6D-EC5E9191BEEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AEE70DC-38FA-4215-ABF2-F9CC02C0787D}

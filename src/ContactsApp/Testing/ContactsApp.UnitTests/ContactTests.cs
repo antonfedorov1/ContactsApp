@@ -1,5 +1,6 @@
 namespace ContactsApp.Model.UnitTests
 {
+    using System;
     using NUnit.Framework;
     using ContactsApp.Model;
 
