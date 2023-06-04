@@ -45,10 +45,10 @@ namespace ContactsApp.Model.UnitTests
         }
 
         /// <summary>
-        /// 
+        /// Сравнение списков по FullName.
         /// </summary>
-        /// <param name="expected"></param>
-        /// <param name="actual"></param>
+        /// <param name="expected">Ожидаемый список.</param>
+        /// <param name="actual">Действительный список.</param>
         /// <exception cref="ArgumentException"></exception>
         public void AssertList(List<Contact> expected, List<Contact> actual)
         {
