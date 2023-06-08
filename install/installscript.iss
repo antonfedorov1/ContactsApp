@@ -19,6 +19,4 @@ Source: "..\src\ContactsApp\ContactsApp.View\bin\Release\ContactsApp.exe"; DestD
 Source: "..\src\ContactsApp\ContactsApp.View\bin\Release\*.dll"; DestDir: "{app}"
 
 [Icons]
-Name: "{group}\ContactsApp"; Filename: "{app}\ContactsApp.exe"
-Name: "{group}\ContactsApp"; Filename: "{app}\uninstal000.exe"
 Name: "{commondesktop}\ContactsApp"; Filename: "{app}\ContactsApp.exe"; Tasks: desktopicon
