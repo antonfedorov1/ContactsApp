@@ -117,5 +117,22 @@ namespace ContactsApp.Model.UnitTests
             // Assert
             AssertList(expected, actual);
         }
+
+        [Test(Description = "Check if searching for an empty substring is correct.")]
+        public void FindContactsBySubstringEmptyString_Searching_ListContainingSubstring()
+        {
+            // Arrange
+            var contacts = ContactsForTests;
+            var expected = ContactsForTests;
+            var project = new Project();
+            var substring = "";
+
+            // Act
+            var listContainingSubstring = project.FindContactsBySubstring(contacts, substring);
+            var actual = listContainingSubstring;
+
+            // Assert
+            AssertList(expected, actual);
+        }
     }
 }
