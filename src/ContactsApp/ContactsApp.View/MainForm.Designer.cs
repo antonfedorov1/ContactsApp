@@ -218,6 +218,7 @@
             this.BirthdayPanel.Name = "BirthdayPanel";
             this.BirthdayPanel.Size = new System.Drawing.Size(538, 75);
             this.BirthdayPanel.TabIndex = 11;
+            this.BirthdayPanel.Visible = false;
             // 
             // BirthdayPanelCloseButton
             // 
