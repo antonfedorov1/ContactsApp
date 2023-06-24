@@ -76,6 +76,7 @@
             DateOfBirthDateTimePicker.MinDate = MinDate;
             DateOfBirthDateTimePicker.MaxDate = MaxDate;
             Contact = new Contact();
+            FullNameTextBox.Text = "";
         }
 
         /// <summary>
@@ -138,8 +139,8 @@
 
         private void FullNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            dictionaryErrors[nameof(FullNameTextBox)] = "";
             FullNameTextBox.BackColor = _correctСolor;
+            dictionaryErrors[nameof(FullNameTextBox)] = "";
             try
             {
                 _contact.FullName = FullNameTextBox.Text;

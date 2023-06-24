@@ -239,9 +239,8 @@
             this.BirthdaySurnamesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
             this.BirthdaySurnamesLabel.Location = new System.Drawing.Point(70, 39);
             this.BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(230, 13);
+            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(0, 13);
             this.BirthdaySurnamesLabel.TabIndex = 2;
-            this.BirthdaySurnamesLabel.Text = "Абакумов, Бондарева, Смирнов и др.";
             // 
             // TodayIsBirthdayOfLabel
             // 

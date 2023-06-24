@@ -68,10 +68,14 @@
             }
             set
             {
+                if (value.Length == 0)
+                {
+                    throw new ArgumentException("The Full Name field must not be empty.");
+                }
                 if (value.Length > MaxLineLengthFullName)
                 {
-                    throw new ArgumentException($"The length of the Full Name field must not be " +
-                         $"more than {MaxLineLengthFullName} characters.");
+                    throw new ArgumentException($"The length of the Full Name field must not" +
+                                                $" be more than {MaxLineLengthFullName} characters.");
                 }
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 value = textInfo.ToTitleCase(value);
@@ -186,7 +190,7 @@
         /// </summary>
         public Contact()
         {
-            FullName = "";
+            FullName = " ";
             EMail = "";
             PhoneNumber = "+7 (000) 000-00-00";
             DateOfBirth = DateTime.Today;

@@ -53,10 +53,10 @@ namespace ContactsApp.Model
         {
             if (substring == "")
             {
-                return contacts;
+                return SortContacts(contacts);
             }
             substring = substring.ToLower();
-            return contacts.FindAll(contact => contact.FullName.ToLower().Contains(substring));
+            return SortContacts(contacts.FindAll(contact => contact.FullName.ToLower().Contains(substring)));
         }
     }
 }

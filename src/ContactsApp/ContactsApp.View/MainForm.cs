@@ -44,6 +44,20 @@
             }
         }
 
+        private void EmptyListContact()
+        {
+            if (_currentContacts.Count == 0)
+            {
+                FindTextBox.Text = "";
+                UpdateCurrentProject();
+                UpdateListBox();
+            }
+            else
+            {
+                UpdateSelectedContact(0);
+            }
+        }
+
         /// <summary>
         /// Добавляет новый контакт в проект.
         /// </summary>
@@ -71,6 +85,8 @@
             {
                 _project.Contacts[index] = contactForm.Contact;
             }
+
+            EmptyListContact();
         }
 
         /// <summary>
@@ -83,9 +99,10 @@
             {
                 return;
             }
-            DialogResult dialogResult = MessageBox.Show("Do you really want to delete "
-                + _project.Contacts[index].FullName + "?", "Warning", MessageBoxButtons.YesNo
-                , MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("Do you really want to delete " 
+                                                        + _project.Contacts[index].FullName + "?",
+                                                        "Warning", MessageBoxButtons.YesNo, 
+                                                        MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
                 _project.Contacts.RemoveAt(index);
@@ -95,6 +112,8 @@
             {
                 return;
             }
+
+            EmptyListContact();
         }
 
         /// <summary>
@@ -131,7 +150,6 @@
         private void AddContactbutton_Click(object sender, EventArgs e)
         {
             AddContact();
-            _project.SortContacts(_project.Contacts);
             UpdateCurrentProject();
             UpdateListBox();
             _projectManager.SaveToFile(_project);
@@ -141,41 +159,26 @@
         {
             if (ContactsListBox.SelectedIndex != -1)
             {
-                var index = _project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]);
-                EditContact(index);
-                _project.SortContacts(_project.Contacts);
+                EditContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
                 UpdateCurrentProject();
                 UpdateListBox();
-                if (_currentContacts.Count == 0)
-                {
-                    FindTextBox.Text = "";
-                    UpdateCurrentProject();
-                    UpdateListBox();
-                    UpdateSelectedContact(index);
-                    ContactsListBox.SelectedIndex = index;
-                }
-                else
-                {
-                    UpdateSelectedContact(0);
-                }
                 _projectManager.SaveToFile(_project);
+                EmptyListContact();
+                ClearSelectedContact();
             }
         }
 
         private void RemoveContactbutton_Click(object sender, EventArgs e)
         {
-            RemoveContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
-            UpdateCurrentProject();
-            UpdateListBox();
-            if (ContactsListBox.Items.Count != 0)
+            if (ContactsListBox.SelectedIndex != -1)
             {
-                UpdateSelectedContact(0);
-            }
-            else
-            {
+                RemoveContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
+                UpdateCurrentProject();
+                UpdateListBox();
+                _projectManager.SaveToFile(_project);
+                EmptyListContact();
                 ClearSelectedContact();
             }
-            _projectManager.SaveToFile(_project);
         }
         private void FindTextBox_TextChanged(object sender, EventArgs e)
         {
