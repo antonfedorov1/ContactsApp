@@ -40,8 +40,10 @@
             this.ContactsListBox = new System.Windows.Forms.ListBox();
             this.RightPanel = new System.Windows.Forms.Panel();
             this.BirthdayPanel = new System.Windows.Forms.Panel();
-            this.BirthdayPanelCloseButton = new System.Windows.Forms.PictureBox();
+            this.BirthDayLayoutPanel = new System.Windows.Forms.Panel();
+            this.moreBirthDayButton = new System.Windows.Forms.PictureBox();
             this.BirthdaySurnamesLabel = new System.Windows.Forms.Label();
+            this.BirthdayPanelCloseButton = new System.Windows.Forms.PictureBox();
             this.TodayIsBirthdayOfLabel = new System.Windows.Forms.Label();
             this.ImageInfoPictureBox = new System.Windows.Forms.PictureBox();
             this.VKTextBox = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.BirthDayLayoutPanel = new System.Windows.Forms.Panel();
-            this.moreBirthDayButton = new System.Windows.Forms.PictureBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
             this.ButtonsTableLayoutPanel.SuspendLayout();
@@ -65,11 +65,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.RemoveContactbutton)).BeginInit();
             this.RightPanel.SuspendLayout();
             this.BirthdayPanel.SuspendLayout();
+            this.BirthDayLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.moreBirthDayButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
-            this.BirthDayLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.moreBirthDayButton)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -224,17 +224,30 @@
             this.BirthdayPanel.TabIndex = 11;
             this.BirthdayPanel.Visible = false;
             // 
-            // BirthdayPanelCloseButton
+            // BirthDayLayoutPanel
             // 
-            this.BirthdayPanelCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BirthdayPanelCloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32;
-            this.BirthdayPanelCloseButton.Location = new System.Drawing.Point(503, 3);
-            this.BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
-            this.BirthdayPanelCloseButton.Size = new System.Drawing.Size(32, 32);
-            this.BirthdayPanelCloseButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.BirthdayPanelCloseButton.TabIndex = 3;
-            this.BirthdayPanelCloseButton.TabStop = false;
-            this.BirthdayPanelCloseButton.Click += new System.EventHandler(this.BirthdayPanelCloseButton_Click);
+            this.BirthDayLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthDayLayoutPanel.AutoSize = true;
+            this.BirthDayLayoutPanel.Controls.Add(this.moreBirthDayButton);
+            this.BirthDayLayoutPanel.Controls.Add(this.BirthdaySurnamesLabel);
+            this.BirthDayLayoutPanel.Location = new System.Drawing.Point(69, 39);
+            this.BirthDayLayoutPanel.Name = "BirthDayLayoutPanel";
+            this.BirthDayLayoutPanel.Size = new System.Drawing.Size(203, 17);
+            this.BirthDayLayoutPanel.TabIndex = 5;
+            // 
+            // moreBirthDayButton
+            // 
+            this.moreBirthDayButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.moreBirthDayButton.Image = global::ContactsApp.View.Properties.Resources.more_32x32;
+            this.moreBirthDayButton.Location = new System.Drawing.Point(171, 0);
+            this.moreBirthDayButton.Name = "moreBirthDayButton";
+            this.moreBirthDayButton.Size = new System.Drawing.Size(32, 17);
+            this.moreBirthDayButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.moreBirthDayButton.TabIndex = 4;
+            this.moreBirthDayButton.TabStop = false;
+            this.moreBirthDayButton.Visible = false;
+            this.moreBirthDayButton.Click += new System.EventHandler(this.MoreBirthDayButton_Click);
             // 
             // BirthdaySurnamesLabel
             // 
@@ -248,6 +261,18 @@
             this.BirthdaySurnamesLabel.TabIndex = 2;
             this.BirthdaySurnamesLabel.Text = "123";
             this.BirthdaySurnamesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // BirthdayPanelCloseButton
+            // 
+            this.BirthdayPanelCloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthdayPanelCloseButton.Image = global::ContactsApp.View.Properties.Resources.close_32x32;
+            this.BirthdayPanelCloseButton.Location = new System.Drawing.Point(503, 3);
+            this.BirthdayPanelCloseButton.Name = "BirthdayPanelCloseButton";
+            this.BirthdayPanelCloseButton.Size = new System.Drawing.Size(32, 32);
+            this.BirthdayPanelCloseButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.BirthdayPanelCloseButton.TabIndex = 3;
+            this.BirthdayPanelCloseButton.TabStop = false;
+            this.BirthdayPanelCloseButton.Click += new System.EventHandler(this.BirthdayPanelCloseButton_Click);
             // 
             // TodayIsBirthdayOfLabel
             // 
@@ -373,31 +398,6 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
-            // BirthDayLayoutPanel
-            // 
-            this.BirthDayLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.BirthDayLayoutPanel.AutoSize = true;
-            this.BirthDayLayoutPanel.Controls.Add(this.moreBirthDayButton);
-            this.BirthDayLayoutPanel.Controls.Add(this.BirthdaySurnamesLabel);
-            this.BirthDayLayoutPanel.Location = new System.Drawing.Point(69, 39);
-            this.BirthDayLayoutPanel.Name = "BirthDayLayoutPanel";
-            this.BirthDayLayoutPanel.Size = new System.Drawing.Size(203, 17);
-            this.BirthDayLayoutPanel.TabIndex = 5;
-            // 
-            // moreBirthDayButton
-            // 
-            this.moreBirthDayButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.moreBirthDayButton.Image = global::ContactsApp.View.Properties.Resources.more_32x32;
-            this.moreBirthDayButton.Location = new System.Drawing.Point(171, 0);
-            this.moreBirthDayButton.Name = "moreBirthDayButton";
-            this.moreBirthDayButton.Size = new System.Drawing.Size(32, 17);
-            this.moreBirthDayButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.moreBirthDayButton.TabIndex = 4;
-            this.moreBirthDayButton.TabStop = false;
-            this.moreBirthDayButton.Visible = false;
-            this.moreBirthDayButton.Click += new System.EventHandler(this.MoreBirthDayButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -422,12 +422,12 @@
             this.RightPanel.PerformLayout();
             this.BirthdayPanel.ResumeLayout(false);
             this.BirthdayPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
             this.BirthDayLayoutPanel.ResumeLayout(false);
             this.BirthDayLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.moreBirthDayButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
