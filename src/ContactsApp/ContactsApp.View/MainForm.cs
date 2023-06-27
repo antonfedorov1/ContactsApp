@@ -1,4 +1,6 @@
-﻿namespace ContactsApp.View
+﻿using System.Linq;
+
+namespace ContactsApp.View
 {
     using ContactsApp.Model;
     using System;
@@ -12,6 +14,11 @@
         /// Объект класса Project.
         /// </summary>
         private Project _project = new Project();
+
+        /// <summary>
+        /// Список именинников.
+        /// </summary>
+        private List<Contact> _birthdayPeople;
 
         /// <summary>
         /// Список отображаемых контактов.
@@ -28,8 +35,58 @@
             InitializeComponent();
             _projectManager = new ProjectManager();
             _project = _projectManager.LoadFromFile();
+            UpdateBirthDay();
             UpdateCurrentProject();
             UpdateListBox();
+        }
+
+        /// <summary>
+        /// FullName именинников.
+        /// </summary>
+        /// <returns>Список именинников.</returns>
+        private List<string> FullNameBirthday()
+        {
+            List<string> peopleBirthDayFullName = new List<string>();
+            foreach (var people in _birthdayPeople)
+            {
+                peopleBirthDayFullName.Add(people.FullName);
+            }
+            return peopleBirthDayFullName;
+        }
+
+        /// <summary>
+        /// Отображает список именинников.
+        /// </summary>
+        private void UpdateBirthDay()
+        {
+            _birthdayPeople = _project.FindBirthdays(_project.Contacts, DateTime.Today).ToList();
+            if (_birthdayPeople.Count != 0)
+            {
+                var peopleBirthDay = FullNameBirthday();
+                BirthdayPanel.Visible = true;
+                if (_birthdayPeople.Count <= 3)
+                {
+                    string fullPeopleBirthDay = "";
+                    fullPeopleBirthDay = string.Join(", ", peopleBirthDay) + ".";
+                    BirthdaySurnamesLabel.Text = fullPeopleBirthDay;
+                    moreBirthDayButton.Visible = false;
+                }
+                else if (_birthdayPeople.Count > 3)
+                {
+                    string threePeopleBirthDay = "";
+                    threePeopleBirthDay = string.Join(", ", peopleBirthDay.Take(3));
+                    BirthdaySurnamesLabel.Text = threePeopleBirthDay;
+                    moreBirthDayButton.Visible = true;
+                }
+                else
+                {
+                    moreBirthDayButton.Visible = false;
+                }
+            }
+            if (_birthdayPeople.Count == 0)
+            {
+                BirthdayPanel.Visible = false;
+            }
         }
 
         /// <summary>
@@ -152,6 +209,7 @@
             AddContact();
             UpdateCurrentProject();
             UpdateListBox();
+            UpdateBirthDay();
             _projectManager.SaveToFile(_project);
         }
 
@@ -162,6 +220,7 @@
                 EditContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
                 UpdateCurrentProject();
                 UpdateListBox();
+                UpdateBirthDay();
                 _projectManager.SaveToFile(_project);
                 EmptyListContact();
                 ClearSelectedContact();
@@ -175,6 +234,7 @@
                 RemoveContact(_project.Contacts.IndexOf(_currentContacts[ContactsListBox.SelectedIndex]));
                 UpdateCurrentProject();
                 UpdateListBox();
+                UpdateBirthDay();
                 _projectManager.SaveToFile(_project);
                 EmptyListContact();
                 ClearSelectedContact();
@@ -214,6 +274,12 @@
                 helpForm.ShowDialog();
                 Activate();
             }
+        }
+
+        private void MoreBirthDayButton_Click(object sender, EventArgs e)
+        {
+            var peopleBirthDay = FullNameBirthday();
+            MessageBox.Show(string.Join(", ", peopleBirthDay) + ".");
         }
 
         private void AddContactbutton_MouseEnter(object sender, EventArgs e)

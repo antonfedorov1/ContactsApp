@@ -55,6 +55,8 @@
             this.FullNameTextBox = new System.Windows.Forms.TextBox();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
+            this.BirthDayLayoutPanel = new System.Windows.Forms.Panel();
+            this.moreBirthDayButton = new System.Windows.Forms.PictureBox();
             this.MainTableLayoutPanel.SuspendLayout();
             this.LeftPanel.SuspendLayout();
             this.ButtonsTableLayoutPanel.SuspendLayout();
@@ -66,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
+            this.BirthDayLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.moreBirthDayButton)).BeginInit();
             this.SuspendLayout();
             // 
             // MainTableLayoutPanel
@@ -210,8 +214,8 @@
             this.BirthdayPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BirthdayPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BirthdayPanel.Controls.Add(this.BirthDayLayoutPanel);
             this.BirthdayPanel.Controls.Add(this.BirthdayPanelCloseButton);
-            this.BirthdayPanel.Controls.Add(this.BirthdaySurnamesLabel);
             this.BirthdayPanel.Controls.Add(this.TodayIsBirthdayOfLabel);
             this.BirthdayPanel.Controls.Add(this.ImageInfoPictureBox);
             this.BirthdayPanel.Location = new System.Drawing.Point(3, 366);
@@ -235,12 +239,15 @@
             // BirthdaySurnamesLabel
             // 
             this.BirthdaySurnamesLabel.AutoSize = true;
-            this.BirthdaySurnamesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BirthdaySurnamesLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.BirthdaySurnamesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.BirthdaySurnamesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
-            this.BirthdaySurnamesLabel.Location = new System.Drawing.Point(70, 39);
+            this.BirthdaySurnamesLabel.Location = new System.Drawing.Point(0, 0);
             this.BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(0, 13);
+            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(28, 13);
             this.BirthdaySurnamesLabel.TabIndex = 2;
+            this.BirthdaySurnamesLabel.Text = "123";
+            this.BirthdaySurnamesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TodayIsBirthdayOfLabel
             // 
@@ -366,6 +373,31 @@
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
+            // BirthDayLayoutPanel
+            // 
+            this.BirthDayLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BirthDayLayoutPanel.AutoSize = true;
+            this.BirthDayLayoutPanel.Controls.Add(this.moreBirthDayButton);
+            this.BirthDayLayoutPanel.Controls.Add(this.BirthdaySurnamesLabel);
+            this.BirthDayLayoutPanel.Location = new System.Drawing.Point(69, 39);
+            this.BirthDayLayoutPanel.Name = "BirthDayLayoutPanel";
+            this.BirthDayLayoutPanel.Size = new System.Drawing.Size(203, 17);
+            this.BirthDayLayoutPanel.TabIndex = 5;
+            // 
+            // moreBirthDayButton
+            // 
+            this.moreBirthDayButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.moreBirthDayButton.Image = global::ContactsApp.View.Properties.Resources.more_32x32;
+            this.moreBirthDayButton.Location = new System.Drawing.Point(171, 0);
+            this.moreBirthDayButton.Name = "moreBirthDayButton";
+            this.moreBirthDayButton.Size = new System.Drawing.Size(32, 17);
+            this.moreBirthDayButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.moreBirthDayButton.TabIndex = 4;
+            this.moreBirthDayButton.TabStop = false;
+            this.moreBirthDayButton.Visible = false;
+            this.moreBirthDayButton.Click += new System.EventHandler(this.MoreBirthDayButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,6 +425,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.BirthdayPanelCloseButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageInfoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
+            this.BirthDayLayoutPanel.ResumeLayout(false);
+            this.BirthDayLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.moreBirthDayButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -425,6 +460,8 @@
         private System.Windows.Forms.PictureBox EditContactbutton;
         private System.Windows.Forms.PictureBox RemoveContactbutton;
         private System.Windows.Forms.PictureBox BirthdayPanelCloseButton;
+        private System.Windows.Forms.Panel BirthDayLayoutPanel;
+        private System.Windows.Forms.PictureBox moreBirthDayButton;
     }
 }
 
