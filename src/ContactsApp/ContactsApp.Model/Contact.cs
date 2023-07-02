@@ -33,6 +33,11 @@
                     "?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}$";
 
         /// <summary>
+        /// Аватарка контакта.
+        /// </summary>
+        private string _avatar;
+
+        /// <summary>
         /// Фамилия и имя контакта.
         /// </summary>
         private string _fullName;
@@ -56,6 +61,21 @@
         /// ID в VK контакта
         /// </summary>
         private string _idVK;
+
+        /// <summary>
+        /// Возвращает и задает аватарку контакта.
+        /// </summary>
+        public string Avatar
+        {
+            get 
+            { 
+                return _avatar; 
+            }
+            set 
+            { 
+                _avatar = value; 
+            }
+        }
 
         /// <summary>
         /// Возвращает и задает фамилию и имя контакта.
