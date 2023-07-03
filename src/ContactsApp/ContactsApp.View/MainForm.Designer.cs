@@ -233,16 +233,16 @@
             this.BirthDayLayoutPanel.Controls.Add(this.BirthdaySurnamesLabel);
             this.BirthDayLayoutPanel.Location = new System.Drawing.Point(69, 39);
             this.BirthDayLayoutPanel.Name = "BirthDayLayoutPanel";
-            this.BirthDayLayoutPanel.Size = new System.Drawing.Size(203, 17);
+            this.BirthDayLayoutPanel.Size = new System.Drawing.Size(50, 14);
             this.BirthDayLayoutPanel.TabIndex = 5;
             // 
             // moreBirthDayButton
             // 
             this.moreBirthDayButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.moreBirthDayButton.Image = global::ContactsApp.View.Properties.Resources.more_32x32;
-            this.moreBirthDayButton.Location = new System.Drawing.Point(171, 0);
+            this.moreBirthDayButton.Location = new System.Drawing.Point(18, 0);
             this.moreBirthDayButton.Name = "moreBirthDayButton";
-            this.moreBirthDayButton.Size = new System.Drawing.Size(32, 17);
+            this.moreBirthDayButton.Size = new System.Drawing.Size(32, 14);
             this.moreBirthDayButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.moreBirthDayButton.TabIndex = 4;
             this.moreBirthDayButton.TabStop = false;
@@ -257,9 +257,9 @@
             this.BirthdaySurnamesLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(255)))));
             this.BirthdaySurnamesLabel.Location = new System.Drawing.Point(0, 0);
             this.BirthdaySurnamesLabel.Name = "BirthdaySurnamesLabel";
-            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(28, 13);
+            this.BirthdaySurnamesLabel.Size = new System.Drawing.Size(14, 13);
             this.BirthdaySurnamesLabel.TabIndex = 2;
-            this.BirthdaySurnamesLabel.Text = "123";
+            this.BirthdaySurnamesLabel.Text = "1";
             this.BirthdaySurnamesLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BirthdayPanelCloseButton
@@ -390,11 +390,11 @@
             // 
             // PhotoPictureBox
             // 
-            this.PhotoPictureBox.BackgroundImage = global::ContactsApp.View.Properties.Resources.photo_placeholder_100x100;
+            this.PhotoPictureBox.Image = global::ContactsApp.View.Properties.Resources.photo_placeholder_100x100;
             this.PhotoPictureBox.Location = new System.Drawing.Point(4, 4);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(100, 100);
-            this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 

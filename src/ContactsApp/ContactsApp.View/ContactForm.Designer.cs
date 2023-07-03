@@ -43,6 +43,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.AddPhotoButton = new System.Windows.Forms.PictureBox();
             this.DateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.openImage = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
             this.ButtonContactAppPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AddPhotoButton)).BeginInit();
@@ -54,7 +55,7 @@
             this.PhotoPictureBox.Location = new System.Drawing.Point(13, 13);
             this.PhotoPictureBox.Name = "PhotoPictureBox";
             this.PhotoPictureBox.Size = new System.Drawing.Size(100, 100);
-            this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.PhotoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PhotoPictureBox.TabIndex = 0;
             this.PhotoPictureBox.TabStop = false;
             // 
@@ -183,6 +184,7 @@
             this.AddPhotoButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.AddPhotoButton.TabIndex = 23;
             this.AddPhotoButton.TabStop = false;
+            this.AddPhotoButton.Click += new System.EventHandler(this.AddPhotoButton_Click);
             this.AddPhotoButton.MouseEnter += new System.EventHandler(this.AddPhotoButton_MouseEnter);
             this.AddPhotoButton.MouseLeave += new System.EventHandler(this.AddPhotoButton_MouseLeave);
             // 
@@ -193,6 +195,10 @@
             this.DateOfBirthDateTimePicker.Size = new System.Drawing.Size(180, 20);
             this.DateOfBirthDateTimePicker.TabIndex = 24;
             this.DateOfBirthDateTimePicker.ValueChanged += new System.EventHandler(this.DateOfBirthDateTimePicker_ValueChanged);
+            // 
+            // openImage
+            // 
+            this.openImage.FileName = "openFileDialog1";
             // 
             // ContactForm
             // 
@@ -244,5 +250,6 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.PictureBox AddPhotoButton;
         private System.Windows.Forms.DateTimePicker DateOfBirthDateTimePicker;
+        private System.Windows.Forms.OpenFileDialog openImage;
     }
 }

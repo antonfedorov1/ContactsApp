@@ -79,6 +79,7 @@
     <Compile Include="ContactForm.Designer.cs">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConvertingImgToStrAndBack.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

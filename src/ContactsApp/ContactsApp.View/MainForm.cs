@@ -16,6 +16,11 @@ namespace ContactsApp.View
         private Project _project = new Project();
 
         /// <summary>
+        /// Объект класса ConvertingImgToStrAndBack.
+        /// </summary>
+        private ConvertingImgToStrAndBack convertingImgToStrAndBack = new ConvertingImgToStrAndBack();
+
+        /// <summary>
         /// Список именинников.
         /// </summary>
         private List<Contact> _birthdayPeople;
@@ -180,6 +185,7 @@ namespace ContactsApp.View
         private void UpdateSelectedContact(int index)
         {
             var contact = _currentContacts[index];
+            PhotoPictureBox.Image = convertingImgToStrAndBack.StrToImg(contact.Avatar);
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.EMail;
             PhoneNumberTextBox.Text = contact.PhoneNumber;

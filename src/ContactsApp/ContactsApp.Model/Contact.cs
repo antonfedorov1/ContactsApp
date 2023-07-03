@@ -195,9 +195,10 @@
         /// <param name="phoneNumber"></param>
         /// <param name="dateOfBirth"></param>
         /// <param name="idVK"></param>
-        public Contact(string fullName, string eMail, string phoneNumber,
+        public Contact(string avatar, string fullName, string eMail, string phoneNumber,
             DateTime dateOfBirth, string idVK)
         {
+            Avatar = avatar;
             FullName = fullName;
             EMail = eMail;
             PhoneNumber = phoneNumber;
@@ -210,6 +211,7 @@
         /// </summary>
         public Contact()
         {
+            Avatar = null;
             FullName = " ";
             EMail = "";
             PhoneNumber = "+7 (000) 000-00-00";
@@ -222,7 +224,7 @@
         /// </summary>
         public object Clone()
         {
-            return new Contact(_fullName, _eMail, _phoneNumber, _dateOfBirth, _idVK);
+            return new Contact(_avatar, _fullName, _eMail, _phoneNumber, _dateOfBirth, _idVK);
         }
     }
 }

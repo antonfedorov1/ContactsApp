@@ -36,10 +36,10 @@
         /// </summary>
         private Dictionary<string, string> dictionaryErrors = new Dictionary<string, string>()
         {
-            { nameof(FullNameTextBox), "" }, 
-            { nameof(EmailTextBox), "" }, 
+            { nameof(FullNameTextBox), "" },
+            { nameof(EmailTextBox), "" },
             { nameof(PhoneNumberTextBox), "" },
-            { nameof(DateOfBirthDateTimePicker), "" }, 
+            { nameof(DateOfBirthDateTimePicker), "" },
             { nameof(VKTextBox), "" }
         };
 
@@ -52,18 +52,18 @@
         /// Возвращает и задает экземпляр класса Contact.
         /// </summary>
         public Contact Contact
-        { 
-            get 
-            { 
-                return _contact; 
+        {
+            get
+            {
+                return _contact;
             }
-            set 
-            { 
+            set
+            {
                 _contact = value;
                 if (value != null)
                 {
                     UpdateForm();
-                } 
+                }
             }
         }
 
@@ -83,7 +83,9 @@
         /// Заполняет поля формы данными из экземпляра класса Contact.
         /// </summary>
         private void UpdateForm()
-        {
+        { 
+            ConvertingImgToStrAndBack convertingImgToStrAndBack = new ConvertingImgToStrAndBack();
+            PhotoPictureBox.Image = convertingImgToStrAndBack.StrToImg(_contact.Avatar);
             FullNameTextBox.Text = _contact.FullName;
             EmailTextBox.Text = _contact.EMail;
             PhoneNumberTextBox.Text = _contact.PhoneNumber;
@@ -210,6 +212,27 @@
                 VKTextBox.BackColor = _errorColor;
                 dictionaryErrors[nameof(VKTextBox)] = exception.Message;
             }
+        }
+
+        private void AddPhotoButton_Click(object sender, EventArgs e)
+        {
+            openImage.Title = "Choose a photo";
+            if (openImage.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    PhotoPictureBox.Image = new Bitmap(openImage.FileName);
+                }
+                catch
+                {
+                    MessageBox.Show("Wrong file format selected", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                ConvertingImgToStrAndBack convertingImgToStrAndBack = new ConvertingImgToStrAndBack();
+                _contact.Avatar = convertingImgToStrAndBack.ImgToStr(openImage.FileName);
+            }
+            else _contact.Avatar = "";
         }
 
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)
