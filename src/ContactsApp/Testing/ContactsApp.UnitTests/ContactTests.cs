@@ -197,7 +197,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.Throws<ArgumentException>(() =>
             {
                 // Act
-                new Contact(wrongFullName, "gmail", "+7000000", new DateTime(2006, 1, 1), "4324");
+                new Contact(null, wrongFullName, "gmail", "+7000000", new DateTime(2006, 1, 1), "4324");
             },
             "Assigning a negative value to the Contact constructor.");
         }
@@ -206,6 +206,9 @@ namespace ContactsApp.Model.UnitTests
         public void Contact_PassingCorrectParameter_ReturnsSameValue()
         {
             // Arrange
+            var correctAvatar = "";
+            var expectedAvatar = correctAvatar;
+
             var correctFullName = "Anton Fedorov";
             var expectedFullName = correctFullName;
 
@@ -223,6 +226,7 @@ namespace ContactsApp.Model.UnitTests
 
             // Act
             var contact = new Contact(
+                correctAvatar,
                 correctFullName,
                 correctEMail,
                 correctPhoneNumber,
@@ -249,6 +253,7 @@ namespace ContactsApp.Model.UnitTests
         {
             // Arrange
             var correctContact = new Contact(
+                null,
                 "Anton Fedorov",
                 "mail.ru",
                 "+7 (000) 000-00-00",
@@ -265,6 +270,7 @@ namespace ContactsApp.Model.UnitTests
             Assert.Multiple(
                 () =>
                 {
+                    Assert.AreEqual(expectedContact.Avatar, actualContact.Avatar);
                     Assert.AreEqual(expectedContact.FullName, actualContact.FullName);
                     Assert.AreEqual(expectedContact.EMail, actualContact.EMail);
                     Assert.AreEqual(expectedContact.PhoneNumber, actualContact.PhoneNumber);

@@ -17,18 +17,21 @@ namespace ContactsApp.Model.UnitTests
             get 
             {
                 var firstContact = new Contact(
+                    null,
                 "Anton Fedorov",
                 "anton_fedorov@mail.ru",
                 "+7 (000) 700-12-30",
                 new DateTime(2000, 01, 18),
                 "325432");
                 var secondContact = new Contact(
+                    null,
                     "Kirill Ivanov",
                     "kirill_ivanov@mail.ru",
                     "+7 (000) 800-43-04",
                     new DateTime(1979, 05, 12),
                     "325432");
                 var thirdContact = new Contact(
+                    null,
                     "Gleb Petrov",
                     "gleb_petrov@mail.ru",
                     "+7 (000) 100-32-43",
@@ -122,9 +125,10 @@ namespace ContactsApp.Model.UnitTests
         public void FindContactsBySubstringEmptyString_Searching_ListContainingSubstring()
         {
             // Arrange
+            var project = new Project();
             var contacts = ContactsForTests;
             var expected = ContactsForTests;
-            var project = new Project();
+            expected = project.SortContacts(expected);
             var substring = "";
 
             // Act
