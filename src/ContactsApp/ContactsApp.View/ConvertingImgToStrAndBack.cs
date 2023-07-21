@@ -12,15 +12,15 @@
         /// <summary>
         /// Преобразование строки в картинку.
         /// </summary>
-        /// <param name="StrImg">Картинка в строке.</param>
+        /// <param name="strImg">Картинка в строке.</param>
         /// <returns>Картинка.</returns>
-        public Image StrToImg(string StrImg)
+        public Image StrToImg(string strImg)
         {
-            if (StrImg == null)
+            if (strImg == null)
             {
                 return Properties.Resources.photo_placeholder_100x100;
             }
-            byte[] arrayimg = Convert.FromBase64String(StrImg);
+            byte[] arrayimg = Convert.FromBase64String(strImg);
             Image imageStr = Image.FromStream(new MemoryStream(arrayimg));
             return imageStr;
         }
@@ -28,14 +28,19 @@
         /// <summary>
         /// Преобразование картинки в строку.
         /// </summary>
-        /// <param name="filename">Картинка.</param>
+        /// <param name="fileName">Картинка.</param>
         /// <returns>Строка.</returns>
-        public string ImgToStr(string filename)
+        public string ImgToStr(string fileName)
         {
-            MemoryStream Memostr = new MemoryStream();
-            Image Img = Image.FromFile(filename);
-            Img.Save(Memostr, Img.RawFormat);
-            byte[] arrayimg = Memostr.ToArray();
+            if (fileName == null)
+            {
+                return null;
+            }
+            MemoryStream memostr = new MemoryStream();
+            Image img = Image.FromFile(fileName);
+            img.Save(memostr, img.RawFormat);
+            img.Dispose();
+            var arrayimg = memostr.ToArray();
             return Convert.ToBase64String(arrayimg);
         }
     }

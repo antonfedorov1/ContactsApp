@@ -6,6 +6,7 @@
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
+    using System.IO;
 
     public partial class ContactForm : Form
     {
@@ -68,7 +69,7 @@
         }
 
         /// <summary>
-        /// Конструтор ContactForm без параметров.
+        /// Конструктор ContactForm без параметров.
         /// </summary>
         public ContactForm()
         {
@@ -229,10 +230,12 @@
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                ConvertingImgToStrAndBack convertingImgToStrAndBack = new ConvertingImgToStrAndBack();
-                _contact.Avatar = convertingImgToStrAndBack.ImgToStr(openImage.FileName);
+
+                var path = new ImageCompressor().Compressor(openImage.FileName);
+                _contact.Avatar = new ConvertingImgToStrAndBack().ImgToStr(path);
+                File.Delete(path);
             }
-            else _contact.Avatar = "";
+            else _contact.Avatar = null;
         }
 
         private void AddPhotoButton_MouseEnter(object sender, EventArgs e)

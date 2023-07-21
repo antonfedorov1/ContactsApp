@@ -1,7 +1,8 @@
-﻿using System.Linq;
+﻿using System.IO;
 
 namespace ContactsApp.View
 {
+    using System.Linq;
     using ContactsApp.Model;
     using System;
     using System.Collections.Generic;
@@ -14,11 +15,6 @@ namespace ContactsApp.View
         /// Объект класса Project.
         /// </summary>
         private Project _project = new Project();
-
-        /// <summary>
-        /// Объект класса ConvertingImgToStrAndBack.
-        /// </summary>
-        private ConvertingImgToStrAndBack convertingImgToStrAndBack = new ConvertingImgToStrAndBack();
 
         /// <summary>
         /// Список именинников.
@@ -185,7 +181,7 @@ namespace ContactsApp.View
         private void UpdateSelectedContact(int index)
         {
             var contact = _currentContacts[index];
-            PhotoPictureBox.Image = convertingImgToStrAndBack.StrToImg(contact.Avatar);
+            PhotoPictureBox.Image = new ConvertingImgToStrAndBack().StrToImg(contact.Avatar);
             FullNameTextBox.Text = contact.FullName;
             EmailTextBox.Text = contact.EMail;
             PhoneNumberTextBox.Text = contact.PhoneNumber;
@@ -203,6 +199,7 @@ namespace ContactsApp.View
         /// </summary>
         private void ClearSelectedContact()
         {
+            PhotoPictureBox.Image = Properties.Resources.photo_placeholder_100x100;
             FullNameTextBox.Clear();
             EmailTextBox.Clear();
             PhoneNumberTextBox.Clear();
