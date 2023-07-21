@@ -198,7 +198,7 @@
             // 
             // openImage
             // 
-            this.openImage.FileName = "openFileDialog1";
+            this.openImage.FileName = "openImage";
             // 
             // ContactForm
             // 

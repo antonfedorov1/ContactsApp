@@ -22,7 +22,7 @@
         /// <summary>
         /// Путь к файлу.
         /// </summary>
-        private static string _path = $@"{_appData}\FedorovAnton\ContactApp\";
+        private static string _path = $@"{_appData}\ContactApp\";
 
 
         /// <summary>
@@ -32,7 +32,6 @@
         { 
             get { return _path; }
             set { _path = value; }
-        
         }
 
         /// <summary>
