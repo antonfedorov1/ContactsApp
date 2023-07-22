@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System;
-using System.Linq;
-
-namespace ContactsApp.Model
+﻿namespace ContactsApp.Model
 {
+    using System.Collections.Generic;
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Список контактов.
     /// </summary>

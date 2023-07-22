@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace ContactsApp.View
+﻿namespace ContactsApp.View
 {
     using System.Linq;
     using ContactsApp.Model;
@@ -8,6 +6,7 @@ namespace ContactsApp.View
     using System.Collections.Generic;
     using System.Drawing;
     using System.Windows.Forms;
+    using System.IO;
 
     public partial class MainForm : Form
     {
