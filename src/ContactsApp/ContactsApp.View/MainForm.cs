@@ -211,6 +211,7 @@
             UpdateCurrentProject();
             UpdateListBox();
             UpdateBirthDay();
+            ClearSelectedContact();
             _projectManager.SaveToFile(_project);
         }
 
