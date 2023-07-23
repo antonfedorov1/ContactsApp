@@ -6,7 +6,6 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.Windows.Forms;
-    using System.IO;
 
     public partial class MainForm : Form
     {
@@ -28,7 +27,7 @@
         /// <summary>
         /// Сериализатор и дисериализатор.
         /// </summary>
-        ProjectManager _projectManager;
+        private ProjectManager _projectManager;
 
         public MainForm()
         {

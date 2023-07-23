@@ -29,7 +29,7 @@
                 string pathToCopiedFile = Path.Combine(Path.GetDirectoryName(path), "PhotoForContactsApp.jpg");
 
                 myEncoderParameters.Param[0] = new EncoderParameter(myEncoder, _qualityLevel);
-                File.Copy(path, pathToCopiedFile);
+                File.Copy(path, pathToCopiedFile, true);
                 bmp1.Save(pathToCopiedFile, jpgEncoder, myEncoderParameters);
                 return pathToCopiedFile;
             }
